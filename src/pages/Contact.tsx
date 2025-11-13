@@ -162,13 +162,13 @@ export default function Contact() {
                 電話でのお問い合わせ
               </h3>
               <p className="text-sm text-gray-700 mb-2">
-                株式会社結禾テクノロジーズ
+                合同会社リコッテ
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                <strong>電話番号:</strong> 080-3376-0625
+                <strong>電話番号:</strong> 080-3824-1560
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                <strong>メールアドレス:</strong> ahuang2025123123@gmail.com
+                <strong>メールアドレス:</strong> qddqdd3316@gmail.com
               </p>
               <p className="text-sm text-gray-700">
                 <strong>受付時間:</strong> 平日 9:00-18:00
