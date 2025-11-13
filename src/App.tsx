@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
-import NewHome from './pages/NewHome';
+import RefactoredHome from './pages/RefactoredHome';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Disclaimer from './pages/Disclaimer';
@@ -27,7 +27,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<NewHome />} />
+        <Route path="/" element={<RefactoredHome />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/disclaimer" element={<Disclaimer />} />
