@@ -60,6 +60,13 @@ export default function RefactoredHome() {
   }, [stockData, stockCode, urlParams]);
 
   const fetchStockData = async (code: string) => {
+    if (!code || !/^\d{4}$/.test(code)) {
+      setStockData(null);
+      setStockCode(code);
+      setError(null);
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
@@ -67,24 +74,34 @@ export default function RefactoredHome() {
       const response = await apiClient.get(`/api/stock/data?code=${code}`);
 
       if (!response.ok) {
-        throw new Error('株価データの取得に失敗しました');
+        setStockData(null);
+        setStockCode(code);
+        setError(null);
+        return;
       }
 
       const data = await response.json();
       setStockData(data);
       setStockCode(code);
+      setError(null);
     } catch (err) {
-      setError(err instanceof Error ? err.message : '不明なエラーが発生しました');
+      setStockData(null);
+      setStockCode(code);
+      setError(null);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleInputSubmit = () => {
-    if (inputValue && /^\d{4}$/.test(inputValue)) {
-      fetchStockData(inputValue);
-    }
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (inputValue) {
+        fetchStockData(inputValue);
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [inputValue]);
 
   useEffect(() => {
     return () => {
@@ -95,7 +112,8 @@ export default function RefactoredHome() {
   }, []);
 
   const runDiagnosis = async () => {
-    if (diagnosisState !== 'initial' || !stockData) return;
+    if (diagnosisState !== 'initial') return;
+    if (!inputValue || !/^\d{4}$/.test(inputValue)) return;
 
     trackDiagnosisButtonClick();
 
@@ -132,8 +150,8 @@ export default function RefactoredHome() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          code: stockCode,
-          stockData: {
+          code: inputValue,
+          stockData: stockData ? {
             name: stockData.info.name,
             price: stockData.info.price,
             change: stockData.info.change,
@@ -143,7 +161,7 @@ export default function RefactoredHome() {
             dividend: stockData.info.dividend,
             industry: stockData.info.industry,
             marketCap: stockData.info.marketCap,
-          },
+          } : null,
         }),
         signal: controller.signal,
       });
@@ -213,8 +231,8 @@ export default function RefactoredHome() {
 
                   const durationMs = Date.now() - diagnosisStartTime;
                   await userTracking.trackDiagnosisClick({
-                    stockCode: stockCode,
-                    stockName: stockData.info.name,
+                    stockCode: inputValue,
+                    stockName: stockData?.info.name || inputValue,
                     durationMs: durationMs
                   });
                 }
@@ -236,8 +254,8 @@ export default function RefactoredHome() {
 
         const durationMs = Date.now() - diagnosisStartTime;
         await userTracking.trackDiagnosisClick({
-          stockCode: stockCode,
-          stockName: stockData.info.name,
+          stockCode: inputValue,
+          stockName: stockData?.info.name || inputValue,
           durationMs: durationMs
         });
       }
@@ -380,7 +398,6 @@ export default function RefactoredHome() {
             <StockCodeInput
               value={inputValue}
               onChange={setInputValue}
-              onSubmit={handleInputSubmit}
             />
 
             <DynamicAIPrompt
@@ -406,7 +423,7 @@ export default function RefactoredHome() {
               </div>
             )}
 
-            {stockData && !loading && diagnosisState === 'initial' && (
+            {inputValue && /^\d{4}$/.test(inputValue) && !loading && diagnosisState === 'initial' && (
               <DiagnosisButton onClick={runDiagnosis} />
             )}
 
@@ -438,8 +455,8 @@ export default function RefactoredHome() {
           isOpen={diagnosisState === 'streaming' || diagnosisState === 'results'}
           onClose={closeModal}
           analysis={analysisResult}
-          stockCode={stockCode}
-          stockName={stockData?.info.name || ''}
+          stockCode={inputValue}
+          stockName={stockData?.info.name || inputValue}
           onLineConversion={handleLineConversion}
           onReportDownload={handleReportDownload}
           isStreaming={diagnosisState === 'streaming'}
