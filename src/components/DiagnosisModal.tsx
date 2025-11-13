@@ -1,6 +1,5 @@
-import { X, ExternalLink, FileText, Download, Loader2 } from 'lucide-react';
+import { X, ExternalLink, Loader2 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
-import RobotScholarIcon from './RobotScholarIcon';
 
 interface DiagnosisModalProps {
   isOpen: boolean;
@@ -43,7 +42,6 @@ export default function DiagnosisModal({
   isStreaming = false,
   isConnecting = false,
 }: DiagnosisModalProps) {
-  const [isDownloading, setIsDownloading] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const lastLengthRef = useRef(0);
 
@@ -76,26 +74,13 @@ export default function DiagnosisModal({
 
   if (!isOpen) return null;
 
-  const handleDownload = async () => {
-    setIsDownloading(true);
-    try {
-      await onReportDownload();
-    } finally {
-      setIsDownloading(false);
-    }
-  };
-
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black bg-opacity-75" style={{ touchAction: 'none' }}>
       <div className="relative w-full max-w-3xl max-h-[90vh]">
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-          <RobotScholarIcon />
-        </div>
-
-        <div className="relative bg-white rounded-lg shadow-blue-glow-lg overflow-hidden border-2 border-blue-400/50 mt-20" style={{ touchAction: 'auto' }}>
+        <div className="relative bg-white rounded-lg shadow-blue-glow-lg overflow-hidden border-2 border-blue-400/50" style={{ touchAction: 'auto' }}>
           <div className="sticky top-0 bg-gradient-to-r from-blue-500 to-cyan-500 px-6 py-4 flex items-center justify-between">
           <div className="flex-1 text-center">
-            <h2 className="text-2xl font-bold text-white">
+            <h2 className="text-lg font-bold text-white">
               {stockName}（{stockCode}）AIによる銘柄診断レポート
             </h2>
             {isConnecting && (
@@ -120,13 +105,7 @@ export default function DiagnosisModal({
           </button>
         </div>
 
-        <div ref={contentRef} className="overflow-y-auto max-h-[calc(90vh-240px)] px-6 py-6">
-          <div className="mb-6 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-lg">
-            <p className="text-sm font-semibold text-yellow-700 leading-relaxed">
-              【重要なお知らせ】本サービスは金融商品の取引を勧誘するものではなく、情報提供のみを目的としています。診断結果は投資助言ではありません。株式投資には価格変動リスク、信用リスクなどが伴い、損失を被る可能性があります。最終的な投資判断はご自身の責任において行ってください。
-            </p>
-          </div>
-
+        <div ref={contentRef} className="overflow-y-auto max-h-[calc(90vh-180px)] px-6 py-6">
           <div className="mb-6">
             <h3 className="text-xl font-bold text-blue-900 text-center mb-6">AI診断結果</h3>
 
@@ -151,9 +130,9 @@ export default function DiagnosisModal({
 
             <button
               onClick={onLineConversion}
-              className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white font-bold py-4 px-6 rounded-lg hover:from-green-700 hover:to-green-800 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 text-lg mt-6"
+              className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white font-bold py-4 px-6 rounded-lg hover:from-green-700 hover:to-green-800 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 text-sm mt-6"
             >
-              <ExternalLink className="w-6 h-6" />
+              <ExternalLink className="w-5 h-5" />
               無料AI診断結果をLINEで毎日受け取る
             </button>
 
@@ -163,27 +142,6 @@ export default function DiagnosisModal({
               </p>
             </div>
           </div>
-        </div>
-
-        <div className="sticky bottom-0 bg-gradient-to-t from-white via-white to-transparent px-6 py-6 border-t border-blue-200">
-          <button
-            onClick={handleDownload}
-            disabled={isDownloading}
-            className="w-full bg-blue-500 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-600 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isDownloading ? (
-              <>
-                <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
-                <span>ダウンロード中...</span>
-              </>
-            ) : (
-              <>
-                <FileText className="w-5 h-5" />
-                <span>レポートをダウンロード</span>
-                <Download className="w-4 h-4" />
-              </>
-            )}
-          </button>
         </div>
         </div>
       </div>
