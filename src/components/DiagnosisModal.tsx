@@ -107,6 +107,14 @@ export default function DiagnosisModal({
 
         <div ref={contentRef} className="overflow-y-auto max-h-[calc(90vh-180px)] px-6 py-6">
           <div className="mb-6">
+            <div className="mb-6 flex justify-center">
+              <img
+                src="/assets/file2.png"
+                alt="AI株価予測精度"
+                className="w-full max-w-2xl h-auto"
+              />
+            </div>
+
             <h3 className="text-xl font-bold text-blue-900 text-center mb-6">AI診断結果</h3>
 
             <div className="bg-blue-50 rounded-xl p-6 shadow-inner relative border border-blue-200">
