@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import RobotScholarIcon from './RobotScholarIcon';
 
 interface DiagnosisLoadingOverlayProps {
   isVisible: boolean;
@@ -61,7 +60,14 @@ export default function DiagnosisLoadingOverlay({
         isExiting ? 'scale-95' : 'scale-100'
       }`}>
         <div className="bg-gradient-to-br from-[#1a0f3e] via-[#2d1b5e] to-[#1a0f3e] border-2 border-orange-500/50 rounded-2xl shadow-2xl p-8">
-          <RobotScholarIcon />
+          <div className="flex justify-center mb-6">
+            <div className="relative w-24 h-24">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full animate-pulse opacity-50"></div>
+              <div className="absolute inset-2 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center">
+                <span className="text-4xl">🤖</span>
+              </div>
+            </div>
+          </div>
 
           <div className="mb-6">
             <h3 className="text-xl font-bold text-white mb-2 text-center">AI診断を実行中</h3>

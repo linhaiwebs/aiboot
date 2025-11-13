@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import VideoBackground from '../components/VideoBackground';
 import RobotHeaderAnimation from '../components/RobotHeaderAnimation';
-import SpeechBubble from '../components/SpeechBubble';
 import StockCodeInput from '../components/StockCodeInput';
 import DynamicAIPrompt from '../components/DynamicAIPrompt';
 import DiagnosisButton from '../components/DiagnosisButton';
