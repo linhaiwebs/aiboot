@@ -23,7 +23,7 @@ const popularJapaneseStocks = [
   'セブン&アイ'
 ];
 
-export default function RobotHeaderAnimation() {
+export default function RobotAtComputerAnimation() {
   const [visibleStocks, setVisibleStocks] = useState<Array<{ name: string; id: number; x: number; y: number; speed: number }>>([]);
   const [nextId, setNextId] = useState(0);
 

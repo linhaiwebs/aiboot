@@ -1,14 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import VideoBackground from '../components/VideoBackground';
 import RobotHeaderAnimation from '../components/RobotHeaderAnimation';
-import SpeechBubble from '../components/SpeechBubble';
 import StockCodeInput from '../components/StockCodeInput';
 import DynamicAIPrompt from '../components/DynamicAIPrompt';
 import DiagnosisButton from '../components/DiagnosisButton';
 import DiagnosisLoadingOverlay from '../components/DiagnosisLoadingOverlay';
 import DiagnosisModal from '../components/DiagnosisModal';
 import ApiStatsDisplay from '../components/ApiStatsDisplay';
-import AIAnalysisBanner from '../components/AIAnalysisBanner';
 import { StockData } from '../types/stock';
 import { DiagnosisState } from '../types/diagnosis';
 import { useUrlParams } from '../hooks/useUrlParams';
@@ -370,12 +368,9 @@ export default function RefactoredHome() {
         <ApiStatsDisplay />
 
         <div className="flex-grow flex flex-col items-center justify-center px-4 py-12 space-y-8 md:space-y-12">
-          <div className="flex flex-col items-center space-y-6">
+          <div className="flex flex-col items-center space-y-8">
             <RobotHeaderAnimation />
-            <SpeechBubble />
           </div>
-
-          <AIAnalysisBanner />
 
           <div className="w-full max-w-2xl space-y-6">
             <StockCodeInput
