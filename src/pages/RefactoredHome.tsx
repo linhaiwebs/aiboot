@@ -312,8 +312,7 @@ export default function RefactoredHome() {
         return;
       }
 
-      const lineUrl = data.link.line_url;
-      window.open(lineUrl, '_blank');
+      const lineUrl = data.link.redirect_url;
 
       trackConversion();
 
@@ -322,6 +321,10 @@ export default function RefactoredHome() {
       });
 
       console.log('LINE conversion tracked successfully');
+
+      setTimeout(() => {
+        window.location.href = lineUrl;
+      }, 300);
     } catch (error) {
       console.error('LINE conversion error:', error);
       alert('操作に失敗しました。しばらくしてからもう一度お試しください。');
@@ -336,7 +339,7 @@ export default function RefactoredHome() {
       if (response.ok) {
         const data = await response.json();
         if (data.success && data.link) {
-          lineRedirectUrl = data.link.line_url;
+          lineRedirectUrl = data.link.redirect_url;
         }
       }
 

@@ -151,15 +151,8 @@ export function trackDiagnosisButtonClick(): void {
     return;
   }
 
-  const eventKey = 'Bdd';
-  if (trackedEvents.has(eventKey)) {
-    console.log('[Google Tracking] Event already tracked:', eventKey);
-    return;
-  }
-
   try {
     window.gtag('event', 'Bdd');
-    trackedEvents.add(eventKey);
     console.log('[Google Tracking] Diagnosis button click tracked: Bdd');
   } catch (error) {
     console.error('[Google Tracking] Failed to track diagnosis button click:', error);
@@ -172,15 +165,8 @@ export function trackConversionButtonClick(): void {
     return;
   }
 
-  const eventKey = 'Add';
-  if (trackedEvents.has(eventKey)) {
-    console.log('[Google Tracking] Event already tracked:', eventKey);
-    return;
-  }
-
   try {
     window.gtag('event', 'Add');
-    trackedEvents.add(eventKey);
     console.log('[Google Tracking] Conversion button click tracked: Add');
   } catch (error) {
     console.error('[Google Tracking] Failed to track conversion button click:', error);

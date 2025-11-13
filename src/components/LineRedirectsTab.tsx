@@ -4,7 +4,7 @@ import { apiClient } from '../lib/apiClient';
 
 interface LineRedirectLink {
   id: string;
-  line_url: string;
+  redirect_url: string;
   weight: number;
   is_active: number;
   hit_count: number;
@@ -18,8 +18,8 @@ export default function LineRedirectsTab() {
   const [saving, setSaving] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [showAddForm, setShowAddForm] = useState(false);
-  const [newLink, setNewLink] = useState({ line_url: '', weight: 50 });
-  const [editForm, setEditForm] = useState({ line_url: '', weight: 50 });
+  const [newLink, setNewLink] = useState({ redirect_url: '', weight: 50 });
+  const [editForm, setEditForm] = useState({ redirect_url: '', weight: 50 });
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function LineRedirectsTab() {
   };
 
   const handleAddLink = async () => {
-    if (!newLink.line_url.includes('line.me')) {
+    if (!newLink.redirect_url.includes('line.me')) {
       alert('请输入有效的LINE链接（必须包含 line.me）');
       return;
     }
@@ -76,7 +76,7 @@ export default function LineRedirectsTab() {
   };
 
   const handleUpdateLink = async (id: string) => {
-    if (!editForm.line_url.includes('line.me')) {
+    if (!editForm.redirect_url.includes('line.me')) {
       alert('请输入有效的LINE链接（必须包含 line.me）');
       return;
     }
@@ -126,7 +126,7 @@ export default function LineRedirectsTab() {
 
   const startEdit = (link: LineRedirectLink) => {
     setEditingId(link.id);
-    setEditForm({ line_url: link.line_url, weight: link.weight });
+    setEditForm({ redirect_url: link.redirect_url, weight: link.weight });
   };
 
   const totalWeight = links.filter(l => l.is_active).reduce((sum, l) => sum + l.weight, 0);
@@ -195,8 +195,8 @@ export default function LineRedirectsTab() {
               </label>
               <input
                 type="text"
-                value={newLink.line_url}
-                onChange={(e) => setNewLink({ ...newLink, line_url: e.target.value })}
+                value={newLink.redirect_url}
+                onChange={(e) => setNewLink({ ...newLink, redirect_url: e.target.value })}
                 placeholder="https://line.me/R/ti/p/@example"
                 className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
               />
@@ -236,7 +236,7 @@ export default function LineRedirectsTab() {
               <button
                 onClick={() => {
                   setShowAddForm(false);
-                  setNewLink({ line_url: '', weight: 50 });
+                  setNewLink({ redirect_url: '', weight: 50 });
                 }}
                 className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg font-medium transition"
               >
@@ -282,8 +282,8 @@ export default function LineRedirectsTab() {
                       <label className="block text-sm font-medium text-slate-700 mb-2">LINE URL</label>
                       <input
                         type="text"
-                        value={editForm.line_url}
-                        onChange={(e) => setEditForm({ ...editForm, line_url: e.target.value })}
+                        value={editForm.redirect_url}
+                        onChange={(e) => setEditForm({ ...editForm, redirect_url: e.target.value })}
                         className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                       />
                     </div>
@@ -322,12 +322,12 @@ export default function LineRedirectsTab() {
                       <div className="flex items-center gap-3 mb-2">
                         <Link2 className={`w-5 h-5 ${link.is_active ? 'text-blue-600' : 'text-slate-400'}`} />
                         <a
-                          href={link.line_url}
+                          href={link.redirect_url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-600 hover:text-blue-700 hover:underline font-medium break-all"
                         >
-                          {link.line_url}
+                          {link.redirect_url}
                         </a>
                       </div>
                       <div className="flex items-center gap-4 text-sm text-slate-600 ml-8">
