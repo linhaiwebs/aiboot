@@ -8,6 +8,7 @@ import DiagnosisButton from '../components/DiagnosisButton';
 import DiagnosisLoadingOverlay from '../components/DiagnosisLoadingOverlay';
 import DiagnosisModal from '../components/DiagnosisModal';
 import ApiStatsDisplay from '../components/ApiStatsDisplay';
+import AIAnalysisBanner from '../components/AIAnalysisBanner';
 import { StockData } from '../types/stock';
 import { DiagnosisState } from '../types/diagnosis';
 import { useUrlParams } from '../hooks/useUrlParams';
@@ -374,13 +375,7 @@ export default function RefactoredHome() {
             <SpeechBubble />
           </div>
 
-          <div className="w-full max-w-2xl">
-            <img
-              src="/assets/top1.png"
-              alt="Top"
-              className="w-full max-w-md mx-auto mb-8 rounded-lg shadow-2xl"
-            />
-          </div>
+          <AIAnalysisBanner />
 
           <div className="w-full max-w-2xl space-y-6">
             <StockCodeInput
@@ -389,7 +384,15 @@ export default function RefactoredHome() {
               onSubmit={handleInputSubmit}
             />
 
-            <DynamicAIPrompt stockName={stockData?.info.name} />
+            <DynamicAIPrompt
+              stockName={stockData?.info.name}
+              stockCode={stockCode}
+              onStockNameClick={() => {
+                if (stockCode) {
+                  setInputValue(stockCode);
+                }
+              }}
+            />
 
             {loading && (
               <div className="text-center py-8">
