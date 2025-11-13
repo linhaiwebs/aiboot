@@ -389,6 +389,10 @@ export default function RefactoredHome() {
               onSubmit={handleInputSubmit}
             />
 
+            {!loading && !error && diagnosisState === 'initial' && (
+              <DynamicAIPrompt stockName={stockData?.info.name} />
+            )}
+
             {loading && (
               <div className="text-center py-8">
                 <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-white border-t-blue-500"></div>
@@ -403,10 +407,7 @@ export default function RefactoredHome() {
             )}
 
             {stockData && !loading && diagnosisState === 'initial' && (
-              <div className="space-y-6">
-                <DynamicAIPrompt stockName={stockData.info.name} />
-                <DiagnosisButton onClick={runDiagnosis} />
-              </div>
+              <DiagnosisButton onClick={runDiagnosis} />
             )}
 
             {diagnosisState === 'error' && (
