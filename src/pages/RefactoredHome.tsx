@@ -389,9 +389,7 @@ export default function RefactoredHome() {
               onSubmit={handleInputSubmit}
             />
 
-            {!loading && !error && diagnosisState === 'initial' && (
-              <DynamicAIPrompt stockName={stockData?.info.name} />
-            )}
+            <DynamicAIPrompt stockName={stockData?.info.name} />
 
             {loading && (
               <div className="text-center py-8">
