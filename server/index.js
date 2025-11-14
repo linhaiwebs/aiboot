@@ -14,6 +14,14 @@ import { cleanExpiredCache } from './utils/cache.js';
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const PORT = process.env.API_PORT || 3001;
+const NODE_ENV = process.env.NODE_ENV || 'development';
+const CORS_ORIGIN = process.env.CORS_ORIGIN;
+const TRUST_PROXY = process.env.TRUST_PROXY === 'true';
+
 initializeDatabase();
 migrateLineRedirectLinks();
 await createInitialAdminUser();
@@ -50,14 +58,7 @@ function validateApiConfiguration() {
 
 validateApiConfiguration();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
 const app = express();
-const PORT = process.env.API_PORT || 3001;
-const NODE_ENV = process.env.NODE_ENV || 'development';
-const CORS_ORIGIN = process.env.CORS_ORIGIN;
-const TRUST_PROXY = process.env.TRUST_PROXY === 'true';
 
 if (TRUST_PROXY) {
   app.set('trust proxy', 1);
