@@ -41,8 +41,10 @@ function validateApiConfiguration() {
     return false;
   }
 
-  console.log('\u2705 SiliconFlow API key configured successfully');
-  console.log('   Key preview:', apiKey.substring(0, 10) + '...');
+  if (NODE_ENV === 'development') {
+    console.log('\u2705 SiliconFlow API key configured successfully');
+    console.log('   Key preview:', apiKey.substring(0, 10) + '...');
+  }
   return true;
 }
 
@@ -62,13 +64,45 @@ if (TRUST_PROXY) {
 }
 
 const corsOptions = {
-  origin: CORS_ORIGIN ? CORS_ORIGIN.split(',').map(o => o.trim()) : '*',
+  origin: CORS_ORIGIN ? CORS_ORIGIN.split(',').map(o => o.trim()) : (NODE_ENV === 'production' ? false : '*'),
   credentials: true,
   optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  maxAge: 86400,
 };
 
+function securityHeadersMiddleware(req, res, next) {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
+
+  if (NODE_ENV === 'production') {
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  }
+
+  const cspDirectives = [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: https:",
+    "font-src 'self' data:",
+    "connect-src 'self' https://www.googletagmanager.com https://api.siliconflow.cn https://kabutan.jp",
+    "frame-ancestors 'none'",
+    "base-uri 'self'",
+    "form-action 'self'"
+  ].join('; ');
+
+  res.setHeader('Content-Security-Policy', cspDirectives);
+
+  next();
+}
+
+app.use(securityHeadersMiddleware);
 app.use(cors(corsOptions));
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 app.use('/api/stock', stockRouter);
 app.use('/api/gemini', geminiRouter);

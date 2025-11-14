@@ -1,5 +1,7 @@
 import { X, ExternalLink, Loader2 } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import AnalysisRenderer from './AnalysisRenderer';
+import AIAccuracyChart from './AIAccuracyChart';
 
 interface DiagnosisModalProps {
   isOpen: boolean;
@@ -12,24 +14,6 @@ interface DiagnosisModalProps {
   isStreaming?: boolean;
   isConnecting?: boolean;
 }
-
-const formatAnalysisText = (text: string) => {
-  const lines = text.split('\n');
-  return lines.map((line, index) => {
-    const formattedLine = line.replace(/(\d+\.?\d*%?|\d+円|[+-]\d+\.?\d*)/g, (match) => {
-      return `<span class="text-blue-600 font-semibold text-lg">${match}</span>`;
-    });
-
-    const isBold = line.includes('###') || line.includes('**') || line.match(/^[\d]+\./);
-    const cleanLine = formattedLine.replace(/###|\*\*/g, '');
-
-    if (isBold) {
-      return `<div key="${index}" class="font-bold text-blue-900 mt-4 mb-2">${cleanLine}</div>`;
-    }
-
-    return `<div key="${index}" class="text-gray-700">${cleanLine}</div>`;
-  }).join('');
-};
 
 export default function DiagnosisModal({
   isOpen,
@@ -108,11 +92,7 @@ export default function DiagnosisModal({
         <div ref={contentRef} className="overflow-y-auto max-h-[calc(90vh-180px)] px-6 py-6">
           <div className="mb-6">
             <div className="mb-6 flex justify-center">
-              <img
-                src="/assets/file2.png"
-                alt="AI株価予測精度"
-                className="w-full max-w-2xl h-auto"
-              />
+              <AIAccuracyChart />
             </div>
 
             <h3 className="text-xl font-bold text-blue-900 text-center mb-6">AI診断結果</h3>
@@ -126,8 +106,8 @@ export default function DiagnosisModal({
                     <p className="text-blue-600 text-sm mt-2">数秒お待ちください</p>
                   </div>
                 ) : (
-                  <div className="leading-relaxed space-y-2">
-                    <div dangerouslySetInnerHTML={{ __html: formatAnalysisText(analysis) }} />
+                  <div>
+                    <AnalysisRenderer text={analysis} />
                     {isStreaming && (
                       <span className="inline-block w-2 h-5 bg-blue-500 animate-pulse ml-1"></span>
                     )}
