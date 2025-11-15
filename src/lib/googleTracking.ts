@@ -49,10 +49,11 @@ export async function initializeGoogleTracking(): Promise<void> {
 }
 
 function loadGA4Script(measurementId: string): Promise<void> {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const script = document.createElement('script');
     script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
     script.async = true;
+    script.crossOrigin = 'anonymous';
     script.onload = () => {
       window.dataLayer = window.dataLayer || [];
       window.gtag = function gtag() {
@@ -60,18 +61,24 @@ function loadGA4Script(measurementId: string): Promise<void> {
       };
       window.gtag('js', new Date());
       window.gtag('config', measurementId);
+      console.log('[Google Tracking] GA4 script loaded successfully');
       resolve();
+    };
+    script.onerror = (error) => {
+      console.error('[Google Tracking] Failed to load GA4 script:', error);
+      reject(error);
     };
     document.head.appendChild(script);
   });
 }
 
 function loadGoogleAdsScript(conversionId: string): Promise<void> {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     if (!window.gtag) {
       const script = document.createElement('script');
       script.src = `https://www.googletagmanager.com/gtag/js?id=${conversionId}`;
       script.async = true;
+      script.crossOrigin = 'anonymous';
       script.onload = () => {
         window.dataLayer = window.dataLayer || [];
         window.gtag = function gtag() {
@@ -79,11 +86,17 @@ function loadGoogleAdsScript(conversionId: string): Promise<void> {
         };
         window.gtag('js', new Date());
         window.gtag('config', conversionId);
+        console.log('[Google Tracking] Google Ads script loaded successfully');
         resolve();
+      };
+      script.onerror = (error) => {
+        console.error('[Google Tracking] Failed to load Google Ads script:', error);
+        reject(error);
       };
       document.head.appendChild(script);
     } else {
       window.gtag('config', conversionId);
+      console.log('[Google Tracking] Google Ads configured using existing gtag');
       resolve();
     }
   });
