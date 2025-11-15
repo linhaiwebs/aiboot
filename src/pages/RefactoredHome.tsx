@@ -459,21 +459,6 @@ export default function RefactoredHome() {
               </div>
             )}
           </div>
-
-          <div className="mt-8 text-center space-y-2">
-            <p className="text-sm text-white/60">
-              Disclaimer: This website's information is not financial advice. Use at your own risk.
-            </p>
-            <div className="flex items-center justify-center gap-4 text-sm">
-              <a href="/terms" className="text-cyan-primary hover:text-cyan-light transition-colors underline">
-                Terms of Use
-              </a>
-              <span className="text-white/40">•</span>
-              <a href="/privacy" className="text-cyan-primary hover:text-cyan-light transition-colors underline">
-                Privacy Policy
-              </a>
-            </div>
-          </div>
         </div>
 
         <DiagnosisLoadingOverlay
