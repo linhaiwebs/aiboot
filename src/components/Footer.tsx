@@ -8,29 +8,29 @@ export default function Footer() {
 
   const legalDisclosures = [
     {
-      title: '【サービスの性質】',
-      content: '本サービスは、AI技術を活用した株式情報の提供および分析ツールです。',
-      highlight: '投資助言業務、投資一任業務、金融商品仲介業務には該当せず、特定の金融商品の売買を推奨・勧誘するものではありません。',
+      title: 'Service Nature',
+      content: 'This service is an AI-powered stock information and analysis tool.',
+      highlight: 'We are not a registered investment adviser, broker-dealer, or financial institution. We do not provide personalized investment advice or recommend specific securities.',
       borderColor: 'border-amber-500'
     },
     {
-      title: '【投資リスクに関する警告】',
-      content: '株式投資には価格変動リスク、信用リスク、流動性リスク等が伴い、',
-      highlight: '投資元本を割り込む可能性があります。',
-      extra: '過去の運用実績は将来の運用成果を保証するものではありません。市場環境の変化により、予想外の損失が発生する可能性があります。',
+      title: 'Investment Risk Warning',
+      content: 'Stock investing involves risks including price volatility, credit risk, liquidity risk, and',
+      highlight: 'the potential loss of principal.',
+      extra: 'Past performance does not guarantee future results. Market conditions can change unexpectedly, resulting in unforeseen losses.',
       borderColor: 'border-red-500'
     },
     {
-      title: '【情報の正確性について】',
-      content: '提供される情報は、信頼できると判断した情報源から取得していますが、その正確性、完全性、適時性を保証するものではありません。AI分析結果は参考情報として提供されるものであり、絶対的な投資判断基準ではありません。',
+      title: 'Information Accuracy',
+      content: 'Information provided is obtained from sources believed to be reliable, but we do not guarantee its accuracy, completeness, or timeliness. AI analysis results are provided as reference information and should not be used as the sole basis for investment decisions.',
       highlight: '',
       borderColor: 'border-blue-500'
     },
     {
-      title: '【投資判断の責任】',
+      title: 'Investment Decision Responsibility',
       content: '',
-      highlight: '最終的な投資判断は、利用者ご自身の責任において行ってください。',
-      extra: '本サービスの利用により生じたいかなる損害についても、当社は一切の責任を負いません。投資を行う際は、証券会社等の金融商品取引業者にご相談ください。',
+      highlight: 'All investment decisions are your own responsibility.',
+      extra: 'We are not liable for any losses resulting from use of this service. Please consult with a licensed financial advisor before making investment decisions.',
       borderColor: 'border-slate-500'
     }
   ];
@@ -55,51 +55,51 @@ export default function Footer() {
             <div className="flex-1">
               <h3 className="text-lg font-bold text-amber-900 mb-3 flex items-center gap-2">
                 <Scale className="w-5 h-5" />
-                金融商品取引法に基づく重要事項
+                Important Disclosures
               </h3>
 
               <div className="space-y-3 text-sm leading-relaxed text-slate-800">
                 <div className="bg-white/70 rounded p-3 border-l-4 border-amber-500">
-                  <p className="font-bold text-amber-900 mb-2">【サービスの性質】</p>
+                  <p className="font-bold text-amber-900 mb-2">Service Nature</p>
                   <p>
-                    本サービスは、AI技術を活用した株式情報の提供および分析ツールです。
-                    <strong className="text-red-700">投資助言業務、投資一任業務、金融商品仲介業務には該当せず、特定の金融商品の売買を推奨・勧誘するものではありません。</strong>
+                    This service is an AI-powered stock information and analysis tool.
+                    <strong className="text-red-700"> We are not a registered investment adviser, broker-dealer, or financial institution. We do not provide personalized investment advice or recommend specific securities.</strong>
                   </p>
                 </div>
 
                 <div className="bg-white/70 rounded p-3 border-l-4 border-red-500">
-                  <p className="font-bold text-red-900 mb-2">【投資リスクに関する警告】</p>
+                  <p className="font-bold text-red-900 mb-2">Investment Risk Warning</p>
                   <p>
-                    株式投資には価格変動リスク、信用リスク、流動性リスク等が伴い、
-                    <strong className="text-red-700">投資元本を割り込む可能性があります。</strong>
-                    過去の運用実績は将来の運用成果を保証するものではありません。
-                    市場環境の変化により、予想外の損失が発生する可能性があります。
+                    Stock investing involves risks including price volatility, credit risk, liquidity risk, and
+                    <strong className="text-red-700"> the potential loss of principal.</strong>
+                    Past performance does not guarantee future results.
+                    Market conditions can change unexpectedly, resulting in unforeseen losses.
                   </p>
                 </div>
 
                 <div className="bg-white/70 rounded p-3 border-l-4 border-blue-500">
-                  <p className="font-bold text-blue-900 mb-2">【情報の正確性について】</p>
+                  <p className="font-bold text-blue-900 mb-2">Information Accuracy</p>
                   <p>
-                    提供される情報は、信頼できると判断した情報源から取得していますが、
-                    その正確性、完全性、適時性を保証するものではありません。
-                    AI分析結果は参考情報として提供されるものであり、絶対的な投資判断基準ではありません。
+                    Information provided is obtained from sources believed to be reliable, but
+                    we do not guarantee its accuracy, completeness, or timeliness.
+                    AI analysis results are provided as reference information and should not be used as the sole basis for investment decisions.
                   </p>
                 </div>
 
                 <div className="bg-white/70 rounded p-3 border-l-4 border-slate-500">
-                  <p className="font-bold text-slate-900 mb-2">【投資判断の責任】</p>
+                  <p className="font-bold text-slate-900 mb-2">Investment Decision Responsibility</p>
                   <p>
-                    <strong className="text-red-700">最終的な投資判断は、利用者ご自身の責任において行ってください。</strong>
-                    本サービスの利用により生じたいかなる損害についても、当社は一切の責任を負いません。
-                    投資を行う際は、証券会社等の金融商品取引業者にご相談ください。
+                    <strong className="text-red-700">All investment decisions are your own responsibility.</strong>
+                    We are not liable for any losses resulting from use of this service.
+                    Please consult with a licensed financial advisor before making investment decisions.
                   </p>
                 </div>
 
                 <div className="bg-slate-100 rounded p-3 mt-4">
-                  <p className="font-bold text-slate-900 mb-1">【登録情報】</p>
+                  <p className="font-bold text-slate-900 mb-1">Registration Status</p>
                   <p className="text-xs text-slate-700">
-                    当サービス提供者は金融商品取引業者（投資助言・代理業、投資運用業等）ではありません。
-                    金融商品取引法第29条の登録を受けた事業者ではないため、個別の投資助言を行うことはできません。
+                    This service is not a registered investment adviser under the Investment Advisers Act of 1940.
+                    Information provided is for educational purposes only and does not constitute personalized investment advice.
                   </p>
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function Footer() {
             </div>
             <h3 className="text-sm font-bold text-amber-900 flex items-center gap-1.5">
               <Scale className="w-4 h-4" />
-              重要事項
+              Important Disclosures
             </h3>
           </div>
 
@@ -141,7 +141,7 @@ export default function Footer() {
               <button
                 onClick={prevSlide}
                 className="p-2 bg-white rounded-full shadow-md hover:bg-amber-100 transition-colors"
-                aria-label="前へ"
+                aria-label="Previous"
               >
                 <ChevronLeft className="w-4 h-4 text-amber-700" />
               </button>
@@ -154,7 +154,7 @@ export default function Footer() {
                     className={`w-2 h-2 rounded-full transition-all ${
                       index === currentSlide ? 'bg-amber-600 w-6' : 'bg-amber-300'
                     }`}
-                    aria-label={`スライド ${index + 1}`}
+                    aria-label={`Slide ${index + 1}`}
                   />
                 ))}
               </div>
@@ -162,7 +162,7 @@ export default function Footer() {
               <button
                 onClick={nextSlide}
                 className="p-2 bg-white rounded-full shadow-md hover:bg-amber-100 transition-colors"
-                aria-label="次へ"
+                aria-label="Next"
               >
                 <ChevronRight className="w-4 h-4 text-amber-700" />
               </button>
@@ -170,10 +170,10 @@ export default function Footer() {
           </div>
 
           <div className="bg-slate-100 rounded p-2.5 mt-3">
-            <p className="font-bold text-slate-900 mb-1 text-xs">【登録情報】</p>
+            <p className="font-bold text-slate-900 mb-1 text-xs">Registration Status</p>
             <p className="text-[10px] leading-relaxed text-slate-700">
-              当サービス提供者は金融商品取引業者（投資助言・代理業、投資運用業等）ではありません。
-              金融商品取引法第29条の登録を受けた事業者ではないため、個別の投資助言を行うことはできません。
+              This service is not a registered investment adviser under the Investment Advisers Act of 1940.
+              Information provided is for educational purposes only and does not constitute personalized investment advice.
             </p>
           </div>
         </div>
@@ -185,7 +185,7 @@ export default function Footer() {
             <div>
               <h4 className="font-bold text-white drop-shadow-lg mb-3 flex items-center gap-2 text-sm">
                 <FileText className="w-4 h-4" />
-                法的文書
+                Legal
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm">
                 <li>
@@ -193,7 +193,7 @@ export default function Footer() {
                     to="/terms"
                     className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
-                    利用規約 <ExternalLink className="w-3 h-3" />
+                    Terms of Service <ExternalLink className="w-3 h-3" />
                   </Link>
                 </li>
                 <li>
@@ -201,7 +201,7 @@ export default function Footer() {
                     to="/privacy"
                     className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
-                    プライバシーポリシー <ExternalLink className="w-3 h-3" />
+                    Privacy Policy <ExternalLink className="w-3 h-3" />
                   </Link>
                 </li>
                 <li>
@@ -209,7 +209,7 @@ export default function Footer() {
                     to="/disclaimer"
                     className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
-                    免責事項 <ExternalLink className="w-3 h-3" />
+                    Disclaimer <ExternalLink className="w-3 h-3" />
                   </Link>
                 </li>
                 <li>
@@ -217,15 +217,7 @@ export default function Footer() {
                     to="/risk-disclosure"
                     className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
-                    リスク開示書面 <ExternalLink className="w-3 h-3" />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/specified-commercial-transaction-act"
-                    className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
-                  >
-                    特定商取引法表記 <ExternalLink className="w-3 h-3" />
+                    Risk Disclosure <ExternalLink className="w-3 h-3" />
                   </Link>
                 </li>
               </ul>
@@ -235,7 +227,7 @@ export default function Footer() {
             <div>
               <h4 className="font-bold text-white drop-shadow-lg mb-3 flex items-center gap-2 text-sm">
                 <Mail className="w-4 h-4" />
-                お問い合わせ
+                Contact
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm">
                 <li>
@@ -243,7 +235,7 @@ export default function Footer() {
                     to="/contact"
                     className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
-                    お問い合わせフォーム <ExternalLink className="w-3 h-3" />
+                    Contact Form <ExternalLink className="w-3 h-3" />
                   </Link>
                 </li>
                 <li>
@@ -251,7 +243,7 @@ export default function Footer() {
                     to="/faq"
                     className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
-                    よくある質問 <ExternalLink className="w-3 h-3" />
+                    FAQ <ExternalLink className="w-3 h-3" />
                   </Link>
                 </li>
                 <li>
@@ -259,7 +251,7 @@ export default function Footer() {
                     to="/support"
                     className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
-                    サポート <ExternalLink className="w-3 h-3" />
+                    Support <ExternalLink className="w-3 h-3" />
                   </Link>
                 </li>
                 <li className="flex items-center gap-1 text-white drop-shadow-lg">
@@ -267,7 +259,7 @@ export default function Footer() {
                   <span>080-3824-1560</span>
                 </li>
                 <li className="text-white/80 drop-shadow-lg text-xs">
-                  受付時間: 平日 9:00-18:00
+                  Hours: Mon-Fri 9:00-18:00 JST
                 </li>
               </ul>
             </div>
@@ -276,15 +268,15 @@ export default function Footer() {
             <div>
               <h4 className="font-bold text-white drop-shadow-lg mb-3 flex items-center gap-2 text-sm">
                 <Info className="w-4 h-4" />
-                サービス情報
+                Services
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm text-white drop-shadow-lg">
-                <li>合同会社リコッテ</li>
-                <li>AI株式診断サービス</li>
-                <li>リアルタイム株価情報</li>
-                <li>テクニカル分析</li>
-                <li>銘柄スクリーニング</li>
-                <li>データ提供: 公開市場情報</li>
+                <li>Ricotte LLC</li>
+                <li>AI Stock Analysis</li>
+                <li>Real-Time Market Data</li>
+                <li>Technical Analysis</li>
+                <li>Stock Screening</li>
+                <li>Data Source: Public Markets</li>
               </ul>
             </div>
 
@@ -292,7 +284,7 @@ export default function Footer() {
             <div>
               <h4 className="font-bold text-white drop-shadow-lg mb-3 flex items-center gap-2 text-sm">
                 <Building className="w-4 h-4" />
-                運営会社
+                Company
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm">
                 <li>
@@ -300,7 +292,7 @@ export default function Footer() {
                     to="/about"
                     className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
-                    会社概要 <ExternalLink className="w-3 h-3" />
+                    About <ExternalLink className="w-3 h-3" />
                   </Link>
                 </li>
                 <li>
@@ -308,7 +300,7 @@ export default function Footer() {
                     to="/team"
                     className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
-                    チーム紹介 <ExternalLink className="w-3 h-3" />
+                    Team <ExternalLink className="w-3 h-3" />
                   </Link>
                 </li>
                 <li>
@@ -316,7 +308,7 @@ export default function Footer() {
                     to="/careers"
                     className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
-                    採用情報 <ExternalLink className="w-3 h-3" />
+                    Careers <ExternalLink className="w-3 h-3" />
                   </Link>
                 </li>
                 <li>
@@ -324,7 +316,7 @@ export default function Footer() {
                     to="/press"
                     className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
-                    プレスリリース <ExternalLink className="w-3 h-3" />
+                    Press <ExternalLink className="w-3 h-3" />
                   </Link>
                 </li>
               </ul>
@@ -334,12 +326,12 @@ export default function Footer() {
           {/* Copyright Section */}
           <div className="border-t border-white/30 pt-4 text-center">
             <p className="text-xs sm:text-sm text-white drop-shadow-lg mb-2 font-medium">
-              &copy; {currentYear} 合同会社リコッテ. All rights reserved.
+              &copy; {currentYear} Ricotte LLC. All rights reserved.
             </p>
             <p className="text-[10px] sm:text-xs text-white/90 drop-shadow-lg leading-relaxed max-w-3xl mx-auto">
-              当サイトで提供される情報は投資勧誘を目的としたものではありません。
-              投資に関する最終決定は、利用者ご自身の判断でなさるようお願いいたします。
-              掲載されている情報の正確性については万全を期しておりますが、その内容の正確性、安全性、有用性を保証するものではありません。
+              Information provided on this site is not intended as investment advice or a recommendation to buy or sell securities.
+              All investment decisions are your sole responsibility.
+              While we strive for accuracy, we do not guarantee the accuracy, safety, or usefulness of the information provided.
             </p>
           </div>
         </div>

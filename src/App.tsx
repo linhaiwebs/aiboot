@@ -14,7 +14,6 @@ import Support from './pages/Support';
 import Team from './pages/Team';
 import Careers from './pages/Careers';
 import Press from './pages/Press';
-import SpecifiedCommercialTransactionAct from './pages/SpecifiedCommercialTransactionAct';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import { initializeGoogleTracking } from './lib/googleTracking';
@@ -39,7 +38,6 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/press" element={<Press />} />
-        <Route path="/specified-commercial-transaction-act" element={<SpecifiedCommercialTransactionAct />} />
 
         {/* Admin Routes */}
         <Route path="/adsadmin" element={<AdminLogin />} />
