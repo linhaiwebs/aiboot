@@ -1,11 +1,15 @@
 import express from 'express';
-import db from '../database/db.js';
+import db, { checkDatabaseHealth } from '../database/db.js';
 import { generateUUID } from '../database/helpers.js';
 
 const router = express.Router();
 
 router.post('/session', async (req, res) => {
   try {
+    if (!checkDatabaseHealth()) {
+      console.error('Database health check failed in tracking session');
+      return res.status(503).json({ error: 'Database is currently unavailable' });
+    }
     const { sessionId, stockCode, stockName, urlParams, userAgent } = req.body;
 
     if (!sessionId) {
@@ -54,6 +58,10 @@ router.post('/session', async (req, res) => {
 
 router.post('/event', async (req, res) => {
   try {
+    if (!checkDatabaseHealth()) {
+      console.error('Database health check failed in tracking event');
+      return res.status(503).json({ error: 'Database is currently unavailable' });
+    }
     const { sessionId, eventType, eventData, stockCode, stockName, durationMs, gclid } = req.body;
 
     if (!sessionId || !eventType) {

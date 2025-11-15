@@ -82,13 +82,13 @@ Market Cap: ¥${stockData.marketCap} billion
 
 You must output exactly in the following format:
 
-We have analyzed ${stockData.name} based on momentum analysis, real-time data, and AI logic.
+We have analyzed ${code} based on momentum analysis, real-time data, and AI logic.
 
 Current stock price is ¥${stockData.price}, change ¥${stockData.change} (${stockData.changePercent})
 
 Please add our "AI Stock Assistant" WhatsApp account.
 
-Once added, send the stock code "${stockData.name}" or "${code}" to receive a detailed diagnostic report.
+Once added, send the stock code "${code}" to receive a detailed diagnostic report.
 
 The AI diagnosis will begin instantly when you send your message, and you'll receive the latest report immediately.
 

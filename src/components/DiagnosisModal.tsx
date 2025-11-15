@@ -1,7 +1,6 @@
 import { X, ExternalLink, Loader2 } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import AnalysisRenderer from './AnalysisRenderer';
-import AIAccuracyChart from './AIAccuracyChart';
 
 interface DiagnosisModalProps {
   isOpen: boolean;
@@ -91,10 +90,6 @@ export default function DiagnosisModal({
 
         <div ref={contentRef} className="overflow-y-auto max-h-[calc(90vh-180px)] px-6 py-6">
           <div className="mb-6">
-            <div className="mb-6 flex justify-center">
-              <AIAccuracyChart />
-            </div>
-
             <h3 className="text-xl font-bold text-blue-900 text-center mb-6">AI Diagnosis Results</h3>
 
             <div className="bg-blue-50 rounded-xl p-6 shadow-inner relative border border-blue-200">
