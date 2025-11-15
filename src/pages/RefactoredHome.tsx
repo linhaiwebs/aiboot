@@ -112,7 +112,7 @@ export default function RefactoredHome() {
 
   const runDiagnosis = async () => {
     if (diagnosisState !== 'initial') return;
-    if (!inputValue || !/^\d{4}$/.test(inputValue)) return;
+    if (!inputValue) return;
 
     trackDiagnosisButtonClick();
 
@@ -425,7 +425,7 @@ export default function RefactoredHome() {
               </div>
             )}
 
-            {inputValue && /^\d{4}$/.test(inputValue) && !loading && diagnosisState === 'initial' && (
+            {inputValue && !loading && diagnosisState === 'initial' && (
               <DiagnosisButton onClick={runDiagnosis} />
             )}
 

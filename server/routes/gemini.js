@@ -16,10 +16,10 @@ router.post('/diagnosis', async (req, res) => {
 
     console.log('Diagnosis request received for stock:', code);
 
-    if (!code || !stockData) {
-      console.error('Missing required parameters:', { code, hasStockData: !!stockData });
+    if (!code) {
+      console.error('Missing required parameters:', { code });
       await recordUsageStats({ cacheHit: false, apiCall: false, error: true, responseTime: Date.now() - startTime });
-      return res.status(400).json({ error: 'Stock code and data are required' });
+      return res.status(400).json({ error: 'Stock code is required' });
     }
 
     const cachedResult = await getCachedDiagnosis(code);
@@ -56,7 +56,10 @@ router.post('/diagnosis', async (req, res) => {
     console.log('SiliconFlow API Key selected, making streaming API request...');
     console.log('Using model:', siliconflowModel);
 
-    const prompt = `あなたは日本の株式市場アナリストです。以下の株式データに基づいて、指定されたフォーマットで診断結果を日本語で作成してください。
+    let prompt;
+
+    if (stockData) {
+      prompt = `あなたは日本の株式市場アナリストです。以下の株式データに基づいて、指定されたフォーマットで診断結果を日本語で作成してください。
 
 株式情報：
 銘柄名: ${stockData.name}
@@ -82,6 +85,25 @@ PBR: ${stockData.pbr}倍
 メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。
 
 重要: このフォーマットを厳密に守り、他の分析内容は含めないでください。`;
+    } else {
+      prompt = `あなたは日本の株式市場アナリストです。ユーザーが入力したコード「${code}」について診断を行います。
+
+この入力コードは有効な株式コードではない可能性があります。
+
+必ず以下のフォーマットで出力してください：
+
+ご入力いただいたコード「${code}」について確認しました。
+
+申し訳ございませんが、このコードに対応する株式データを取得できませんでした。正しい4桁の株式コード（例：2269）を入力してください。
+
+私たちのスタッフ、「AI 株式 アシスタント」のLINEアカウントを追加してください。
+
+追加が完了しましたら、詳細な診断レポートを受け取るために、正しい銘柄コードを送信してください。
+
+メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。
+
+重要: このフォーマットを厳密に守り、他の分析内容は含めないでください。`;
+    }
 
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
