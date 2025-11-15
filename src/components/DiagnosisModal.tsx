@@ -26,11 +26,12 @@ export default function DiagnosisModal({
   isConnecting = false,
 }: DiagnosisModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
+  const outputRef = useRef<HTMLDivElement>(null);
   const lastLengthRef = useRef(0);
 
   useEffect(() => {
-    if (isStreaming && contentRef.current && analysis.length > lastLengthRef.current) {
-      contentRef.current.scrollTop = contentRef.current.scrollHeight;
+    if (isStreaming && outputRef.current && analysis.length > lastLengthRef.current) {
+      outputRef.current.scrollTop = outputRef.current.scrollHeight;
       lastLengthRef.current = analysis.length;
     }
   }, [analysis, isStreaming]);
@@ -92,7 +93,10 @@ export default function DiagnosisModal({
           <div className="mb-6">
             <h3 className="text-xl font-bold text-blue-900 text-center mb-6">AI Diagnosis Results</h3>
 
-            <div className="bg-blue-50 rounded-xl p-6 shadow-inner relative border border-blue-200">
+            <div
+              ref={outputRef}
+              className="bg-blue-50 rounded-xl p-6 shadow-inner relative border border-blue-200 h-[250px] overflow-y-auto overflow-x-hidden"
+            >
               <div className="prose prose-sm max-w-none">
                 {isConnecting ? (
                   <div className="text-center py-8">
