@@ -88,7 +88,7 @@ export default function DiagnosisModal({
           </button>
         </div>
 
-        <div ref={contentRef} className="overflow-y-auto max-h-[calc(90vh-180px)] px-6 py-6">
+        <div ref={contentRef} className="overflow-y-auto h-[500px] px-6 py-6">
           <div className="mb-6">
             <h3 className="text-xl font-bold text-blue-900 text-center mb-6">AI Diagnosis Results</h3>
 

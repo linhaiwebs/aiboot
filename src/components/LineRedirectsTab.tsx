@@ -198,7 +198,7 @@ export default function LineRedirectsTab() {
                 value={newLink.redirect_url}
                 onChange={(e) => setNewLink({ ...newLink, redirect_url: e.target.value })}
                 placeholder="https://line.me/R/ti/p/@example"
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-slate-900"
               />
             </div>
             <div>
@@ -211,7 +211,7 @@ export default function LineRedirectsTab() {
                 max="100"
                 value={newLink.weight}
                 onChange={(e) => setNewLink({ ...newLink, weight: parseInt(e.target.value) || 1 })}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-slate-900"
               />
               <p className="text-xs text-slate-500 mt-1">权重越高，被选中的概率越大</p>
             </div>
@@ -284,7 +284,7 @@ export default function LineRedirectsTab() {
                         type="text"
                         value={editForm.redirect_url}
                         onChange={(e) => setEditForm({ ...editForm, redirect_url: e.target.value })}
-                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
                       />
                     </div>
                     <div>
@@ -295,7 +295,7 @@ export default function LineRedirectsTab() {
                         max="100"
                         value={editForm.weight}
                         onChange={(e) => setEditForm({ ...editForm, weight: parseInt(e.target.value) || 1 })}
-                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
                       />
                     </div>
                     <div className="flex gap-3">
