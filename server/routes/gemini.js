@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { getCachedDiagnosis, saveDiagnosisToCache } from '../utils/cache.js';
 import { getRateLimitStatus } from '../utils/rateLimiter.js';
 import { recordUsageStats } from '../utils/stats.js';
+import { checkDatabaseHealth } from '../database/db.js';
 
 dotenv.config();
 
@@ -12,21 +13,28 @@ router.post('/diagnosis', async (req, res) => {
   const startTime = Date.now();
 
   try {
+    if (!checkDatabaseHealth()) {
+      console.error('Database health check failed');
+      return res.status(503).json({
+        error: 'Database is currently unavailable. Please try again later.'
+      });
+    }
+
     const { code, stockData } = req.body;
 
     console.log('Diagnosis request received for stock:', code);
 
     if (!code) {
       console.error('Missing required parameters:', { code });
-      await recordUsageStats({ cacheHit: false, apiCall: false, error: true, responseTime: Date.now() - startTime });
+      recordUsageStats({ cacheHit: false, apiCall: false, error: true, responseTime: Date.now() - startTime });
       return res.status(400).json({ error: 'Stock code is required' });
     }
 
-    const cachedResult = await getCachedDiagnosis(code);
+    const cachedResult = getCachedDiagnosis(code);
     if (cachedResult) {
       console.log(`Returning cached result for ${code}`);
       const responseTime = Date.now() - startTime;
-      await recordUsageStats({ cacheHit: true, apiCall: false, error: false, responseTime });
+      recordUsageStats({ cacheHit: true, apiCall: false, error: false, responseTime });
       return res.json({
         analysis: cachedResult.diagnosis_result,
         cached: true,
@@ -44,9 +52,9 @@ router.post('/diagnosis', async (req, res) => {
 
       const mockAnalysis = `【${stockData.name} (${code}) Market Analysis】\n\nCurrent stock price is ¥${stockData.price}, change ¥${stockData.change} (${stockData.changePercent}%)\n\n■ Technical Indicators\nPER: ${stockData.per}x\nPBR: ${stockData.pbr}x\nDividend Yield: ${stockData.dividend}%\n\n■ Industry Analysis\nBelongs to ${stockData.industry} sector with market cap of ¥${stockData.marketCap} billion.\n\n■ Market Trend\nThis stock is attracting attention in the current market environment. Based on technical indicators, it is evaluated as ${parseFloat(stockData.per) > 15 ? "slightly overvalued" : "fair value"}.\n\n※This analysis is for informational purposes only and does not constitute investment advice. Investment decisions are your own responsibility.`;
 
-      await saveDiagnosisToCache(code, stockData, mockAnalysis, 'mock');
+      saveDiagnosisToCache(code, stockData, mockAnalysis, 'mock');
       const responseTime = Date.now() - startTime;
-      await recordUsageStats({ cacheHit: false, apiCall: false, error: false, responseTime });
+      recordUsageStats({ cacheHit: false, apiCall: false, error: false, responseTime });
       return res.json({ analysis: mockAnalysis, cached: false, mock: true });
     }
 
@@ -146,7 +154,7 @@ Important: Strictly follow this format and do not include any other analysis con
       if (fetchError.name === 'AbortError') {
         console.error('Request timeout after 45 seconds');
         const responseTime = Date.now() - startTime;
-        await recordUsageStats({ cacheHit: false, apiCall: true, error: true, responseTime });
+        recordUsageStats({ cacheHit: false, apiCall: true, error: true, responseTime });
         res.write(`data: ${JSON.stringify({ error: 'Request timed out. Please try again.' })}\n\n`);
         res.end();
         return;
@@ -160,7 +168,7 @@ Important: Strictly follow this format and do not include any other analysis con
       const errorBody = await siliconflowResponse.text();
       console.error('SiliconFlow API error response:', errorBody);
       const responseTime = Date.now() - startTime;
-      await recordUsageStats({ cacheHit: false, apiCall: true, error: true, responseTime });
+      recordUsageStats({ cacheHit: false, apiCall: true, error: true, responseTime });
       res.write(`data: ${JSON.stringify({ error: `SiliconFlow API error: ${siliconflowResponse.status}` })}\n\n`);
       res.end();
       return;
@@ -213,20 +221,20 @@ Important: Strictly follow this format and do not include any other analysis con
     console.log('Successfully generated streaming analysis, length:', fullAnalysis.length);
 
     if (fullAnalysis.trim().length > 0) {
-      await saveDiagnosisToCache(code, stockData, fullAnalysis, 'qwen2.5-7b-instruct');
+      saveDiagnosisToCache(code, stockData, fullAnalysis, 'qwen2.5-7b-instruct');
     } else {
       console.warn('Empty analysis result, not caching');
     }
 
     const responseTime = Date.now() - startTime;
-    await recordUsageStats({ cacheHit: false, apiCall: true, error: false, responseTime });
+    recordUsageStats({ cacheHit: false, apiCall: true, error: false, responseTime });
 
   } catch (error) {
     console.error('Error in diagnosis function:', error);
     console.error('Error stack:', error.stack);
 
     const responseTime = Date.now() - startTime;
-    await recordUsageStats({ cacheHit: false, apiCall: false, error: true, responseTime });
+    recordUsageStats({ cacheHit: false, apiCall: false, error: true, responseTime });
 
     if (!res.headersSent) {
       res.status(500).json({
@@ -245,7 +253,7 @@ router.get('/stats', async (req, res) => {
   try {
     const rateLimitStatus = getRateLimitStatus();
     const { getTodayStats } = await import('../utils/stats.js');
-    const todayStats = await getTodayStats();
+    const todayStats = getTodayStats();
 
     res.json({
       rateLimit: rateLimitStatus,
