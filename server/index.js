@@ -3,7 +3,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import stockRouter from './routes/stock.js';
 import geminiRouter from './routes/gemini.js';
 import adminRouter from './routes/admin.js';
 import trackingRouter from './routes/tracking.js';
@@ -91,7 +90,7 @@ function securityHeadersMiddleware(req, res, next) {
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com" + (NODE_ENV === 'development' ? " https://tagassistant.google.com" : ""),
     "img-src 'self' data: https: https://www.google.com https://www.google.co.jp https://www.google-analytics.com https://ssl.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://pagead2.googlesyndication.com" + (NODE_ENV === 'development' ? " https://tagassistant.google.com" : ""),
     "font-src 'self' data: https://fonts.gstatic.com",
-    "connect-src 'self' https://www.google.com https://www.google.co.jp https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://region1.analytics.google.com https://stats.g.doubleclick.net https://googleads.g.doubleclick.net https://www.googleadservices.com https://googleadservices.com https://api.siliconflow.cn https://kabutan.jp" + (NODE_ENV === 'development' ? " https://tagassistant.google.com" : ""),
+    "connect-src 'self' https://www.google.com https://www.google.co.jp https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://region1.analytics.google.com https://stats.g.doubleclick.net https://googleads.g.doubleclick.net https://www.googleadservices.com https://googleadservices.com https://api.siliconflow.cn" + (NODE_ENV === 'development' ? " https://tagassistant.google.com" : ""),
     "frame-src https://bid.g.doubleclick.net https://googleads.g.doubleclick.net https://www.googleadservices.com" + (NODE_ENV === 'development' ? " https://tagassistant.google.com" : ""),
     "frame-ancestors 'none'",
     "base-uri 'self'",
@@ -107,7 +106,6 @@ app.use(securityHeadersMiddleware);
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '10mb' }));
 
-app.use('/api/stock', stockRouter);
 app.use('/api/gemini', geminiRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/tracking', trackingRouter);
@@ -136,7 +134,6 @@ if (NODE_ENV === 'production') {
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📊 Stock API: http://localhost:${PORT}/api/stock`);
   console.log(`🤖 SiliconFlow API: http://localhost:${PORT}/api/gemini`);
   console.log(`🌍 Environment: ${NODE_ENV}`);
 

@@ -2,11 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import VideoBackground from '../components/VideoBackground';
 import RobotHeaderAnimation from '../components/RobotHeaderAnimation';
 import StockCodeInput from '../components/StockCodeInput';
-import DynamicAIPrompt from '../components/DynamicAIPrompt';
 import DiagnosisButton from '../components/DiagnosisButton';
 import DiagnosisLoadingOverlay from '../components/DiagnosisLoadingOverlay';
 import DiagnosisModal from '../components/DiagnosisModal';
-import { StockData } from '../types/stock';
 import { DiagnosisState } from '../types/diagnosis';
 import { useUrlParams } from '../hooks/useUrlParams';
 import { apiClient } from '../lib/apiClient';
@@ -16,10 +14,7 @@ import { generateDiagnosisReport } from '../lib/reportGenerator';
 
 export default function RefactoredHome() {
   const urlParams = useUrlParams();
-  const [stockCode, setStockCode] = useState('');
   const [inputValue, setInputValue] = useState('');
-  const [stockData, setStockData] = useState<StockData | null>(null);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const [diagnosisState, setDiagnosisState] = useState<DiagnosisState>('initial');
@@ -31,74 +26,27 @@ export default function RefactoredHome() {
 
   useEffect(() => {
     if (urlParams.code) {
-      setStockCode(urlParams.code);
       setInputValue(urlParams.code);
-      fetchStockData(urlParams.code);
     }
   }, [urlParams.code]);
 
   useEffect(() => {
     const trackPageVisit = async () => {
-      if (stockData) {
-        await userTracking.trackPageLoad({
-          stockCode: stockCode,
-          stockName: stockData.info.name,
-          urlParams: {
-            src: urlParams.src || '',
-            gclid: urlParams.gclid || '',
-            racText: urlParams.racText || '',
-            code: urlParams.code || ''
-          }
-        });
-      }
+      await userTracking.trackPageLoad({
+        stockCode: inputValue,
+        stockName: inputValue,
+        urlParams: {
+          src: urlParams.src || '',
+          gclid: urlParams.gclid || '',
+          racText: urlParams.racText || '',
+          code: urlParams.code || ''
+        }
+      });
     };
 
     trackPageVisit();
-  }, [stockData, stockCode, urlParams]);
+  }, [inputValue, urlParams]);
 
-  const fetchStockData = async (code: string) => {
-    if (!code || !/^\d{4}$/.test(code)) {
-      setStockData(null);
-      setStockCode(code);
-      setError(null);
-      return;
-    }
-
-    setLoading(true);
-    setError(null);
-
-    try {
-      const response = await apiClient.get(`/api/stock/data?code=${code}`);
-
-      if (!response.ok) {
-        setStockData(null);
-        setStockCode(code);
-        setError(null);
-        return;
-      }
-
-      const data = await response.json();
-      setStockData(data);
-      setStockCode(code);
-      setError(null);
-    } catch (err) {
-      setStockData(null);
-      setStockCode(code);
-      setError(null);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (inputValue) {
-        fetchStockData(inputValue);
-      }
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, [inputValue]);
 
   useEffect(() => {
     return () => {
@@ -148,17 +96,6 @@ export default function RefactoredHome() {
         },
         body: JSON.stringify({
           code: inputValue,
-          stockData: stockData ? {
-            name: stockData.info.name,
-            price: stockData.info.price,
-            change: stockData.info.change,
-            changePercent: stockData.info.changePercent,
-            per: stockData.info.per,
-            pbr: stockData.info.pbr,
-            dividend: stockData.info.dividend,
-            industry: stockData.info.industry,
-            marketCap: stockData.info.marketCap,
-          } : null,
         }),
         signal: controller.signal,
       });
@@ -229,7 +166,7 @@ export default function RefactoredHome() {
                   const durationMs = Date.now() - diagnosisStartTime;
                   await userTracking.trackDiagnosisClick({
                     stockCode: inputValue,
-                    stockName: stockData?.info.name || inputValue,
+                    stockName: inputValue,
                     durationMs: durationMs
                   });
                 }
@@ -243,7 +180,7 @@ export default function RefactoredHome() {
         const result = await response.json();
 
         if (!result.analysis || result.analysis.trim() === '') {
-          throw new Error('診断結果が生成されませんでした');
+          throw new Error('Diagnosis results could not be generated');
         }
 
         setAnalysisResult(result.analysis);
@@ -252,19 +189,19 @@ export default function RefactoredHome() {
         const durationMs = Date.now() - diagnosisStartTime;
         await userTracking.trackDiagnosisClick({
           stockCode: inputValue,
-          stockName: stockData?.info.name || inputValue,
+          stockName: inputValue,
           durationMs: durationMs
         });
       }
     } catch (err) {
       console.error('Diagnosis error:', err);
-      let errorMessage = '診断中にエラーが発生しました';
+      let errorMessage = 'An error occurred during diagnosis';
       let errorDetails = '';
 
       if (err instanceof Error) {
         if (err.name === 'AbortError') {
-          errorMessage = 'リクエストがタイムアウトしました';
-          errorDetails = '接続に時間がかかりすぎています。もう一度お試しください。';
+          errorMessage = 'Request timed out';
+          errorDetails = 'The connection took too long. Please try again.';
         } else {
           errorMessage = err.message;
 
@@ -279,7 +216,7 @@ export default function RefactoredHome() {
         }
       }
 
-      setError(`${errorMessage}${errorDetails ? `\n詳細: ${errorDetails}` : ''}`);
+      setError(`${errorMessage}${errorDetails ? `\nDetails: ${errorDetails}` : ''}`);
       setDiagnosisState('error');
       setShowLoadingOverlay(false);
       setLoadingProgress(0);
@@ -342,8 +279,8 @@ export default function RefactoredHome() {
       }
 
       await generateDiagnosisReport({
-        stockCode: stockCode,
-        stockName: stockData?.info.name || '',
+        stockCode: inputValue,
+        stockName: inputValue,
         analysis: analysisResult,
         whatsappRedirectUrl: whatsappRedirectUrl
       });
@@ -351,8 +288,8 @@ export default function RefactoredHome() {
       await userTracking.trackEvent({
         sessionId: sessionStorage.getItem('sessionId') || '',
         eventType: 'report_download',
-        stockCode: stockCode,
-        stockName: stockData?.info.name || '',
+        stockCode: inputValue,
+        stockName: inputValue,
         eventData: {
           reportFormat: 'docx',
           timestamp: new Date().toISOString()
@@ -362,7 +299,7 @@ export default function RefactoredHome() {
       console.log('Report download tracked successfully');
     } catch (error) {
       console.error('Report download error:', error);
-      alert('レポートのダウンロードに失敗しました。もう一度お試しください。');
+      alert('Failed to download report. Please try again.');
     }
   };
 
@@ -416,23 +353,6 @@ export default function RefactoredHome() {
               onChange={setInputValue}
             />
 
-            <DynamicAIPrompt
-              stockName={stockData?.info.name}
-              stockCode={stockCode}
-              onStockNameClick={() => {
-                if (stockCode) {
-                  setInputValue(stockCode);
-                }
-              }}
-            />
-
-            {loading && (
-              <div className="text-center py-8">
-                <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-cyan-primary/30 border-t-cyan-primary"></div>
-                <p className="mt-4 text-white font-semibold text-lg drop-shadow-lg">Loading stock data...</p>
-              </div>
-            )}
-
             {error && diagnosisState !== 'error' && (
               <div className="bg-red-500/90 backdrop-blur-sm border-2 border-red-300 rounded-xl p-4 text-center">
                 <p className="text-white font-semibold">{error}</p>
@@ -472,7 +392,7 @@ export default function RefactoredHome() {
           onClose={closeModal}
           analysis={analysisResult}
           stockCode={inputValue}
-          stockName={stockData?.info.name || inputValue}
+          stockName={inputValue}
           onWhatsAppConversion={handleWhatsAppConversion}
           onReportDownload={handleReportDownload}
           isStreaming={diagnosisState === 'streaming'}
