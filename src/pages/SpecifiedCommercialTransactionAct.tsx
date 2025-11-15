@@ -10,7 +10,7 @@ export default function SpecifiedCommercialTransactionAct() {
           className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
-          トップページに戻る
+          Back to Home
         </Link>
 
         <div className="bg-white rounded-xl shadow-lg p-8">
@@ -36,21 +36,21 @@ export default function SpecifiedCommercialTransactionAct() {
                   <dl className="space-y-3">
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">組織名</dt>
-                      <dd className="sm:col-span-2 text-gray-700">合同会社リコッテ</dd>
+                      <dd className="sm:col-span-2 text-gray-700">Star Merchant Services</dd>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">組織名（英語）</dt>
-                      <dd className="sm:col-span-2 text-gray-700">Ricotte LLC</dd>
+                      <dd className="sm:col-span-2 text-gray-700">Star Merchant Services</dd>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">担当者名</dt>
-                      <dd className="sm:col-span-2 text-gray-700">田口哲夫</dd>
+                      <dd className="sm:col-span-2 text-gray-700">Moore Zinna</dd>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">所在地</dt>
                       <dd className="sm:col-span-2 text-gray-700">
-                        〒536-8501<br />
-                        大阪府大阪市城东区野江一丁目13番4号
+                        〒48226<br />
+                        2335 Hayhurst Lane, Michigan 48226
                       </dd>
                     </div>
                   </dl>
@@ -68,15 +68,15 @@ export default function SpecifiedCommercialTransactionAct() {
                   <dl className="space-y-3">
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">電話番号</dt>
-                      <dd className="sm:col-span-2 text-gray-700">080-3824-1560</dd>
+                      <dd className="sm:col-span-2 text-gray-700">+1-313-759-8088</dd>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">メールアドレス</dt>
-                      <dd className="sm:col-span-2 text-blue-600">qddqdd3316@gmail.com</dd>
+                      <dd className="sm:col-span-2 text-blue-600">qddqdd9090@gmail.com</dd>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">受付時間</dt>
-                      <dd className="sm:col-span-2 text-gray-700">平日 9:00 - 18:00（土日祝日、年末年始を除く）</dd>
+                      <dd className="sm:col-span-2 text-gray-700">Monday - Friday: 9:00 AM - 6:00 PM EST（土日祝日、年末年始を除く）</dd>
                     </div>
                   </dl>
                 </div>
@@ -241,14 +241,14 @@ export default function SpecifiedCommercialTransactionAct() {
                   <Mail className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">メール</p>
-                    <p className="text-blue-600">qddqdd3316@gmail.com</p>
+                    <p className="text-blue-600">qddqdd9090@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 mb-4">
                   <Phone className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">電話</p>
-                    <p className="text-gray-700">080-3824-1560（平日 9:00 - 18:00）</p>
+                    <p className="text-gray-700">+1-313-759-8088（Monday - Friday: 9:00 AM - 6:00 PM EST）</p>
                   </div>
                 </div>
                 <Link

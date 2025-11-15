@@ -10,7 +10,7 @@ export default function Privacy() {
           className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
-          トップページに戻る
+          Back to Home
         </Link>
 
         <div className="bg-white rounded-xl shadow-lg p-8">
@@ -27,7 +27,7 @@ export default function Privacy() {
             <section className="mb-8">
               <h2 className="text-xl font-bold text-gray-900 mb-4">1. 基本方針</h2>
               <p className="text-gray-700 leading-relaxed">
-                AI株式診断サービス（以下「当サービス」）の運営者である合同会社リコッテ（以下「当社」）は、利用者の個人情報の重要性を認識し、
+                AI株式診断サービス（以下「当サービス」）の運営者であるStar Merchant Services（以下「当社」）は、利用者の個人情報の重要性を認識し、
                 個人情報の保護に関する法律（個人情報保護法）を遵守し、適切に取り扱い、保護することに努めます。
               </p>
             </section>
@@ -140,13 +140,13 @@ export default function Privacy() {
                 本ポリシーに関するご質問、個人情報の取り扱いに関するご相談は、お問い合わせフォームよりご連絡ください。
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                <strong>合同会社リコッテ（Ricotte LLC）</strong>
+                <strong>Star Merchant Services（Star Merchant Services）</strong>
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                メール: qddqdd3316@gmail.com
+                メール: qddqdd9090@gmail.com
               </p>
               <p className="text-sm text-gray-700">
-                受付時間: 平日 9:00-18:00（土日祝日を除く）
+                受付時間: Mon-Fri 9:00 AM - 6:00 PM EST（土日祝日を除く）
               </p>
             </div>
           </div>

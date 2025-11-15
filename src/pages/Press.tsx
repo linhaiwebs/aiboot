@@ -51,7 +51,7 @@ export default function Press() {
     department: '広報担当',
     email: 'press@ai-stock-diagnosis.example.com',
     phone: '03-XXXX-XXXX',
-    hours: '平日 9:00 - 18:00'
+    hours: 'Monday - Friday: 9:00 AM - 6:00 PM EST'
   };
 
   return (
@@ -62,7 +62,7 @@ export default function Press() {
           className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
-          トップページに戻る
+          Back to Home
         </Link>
 
         <div className="bg-white rounded-xl shadow-lg p-8">

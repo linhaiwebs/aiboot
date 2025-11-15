@@ -10,7 +10,7 @@ export default function Support() {
           className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
-          トップページに戻る
+          Back to Home
         </Link>
 
         <div className="bg-white rounded-xl shadow-lg p-8">
@@ -178,7 +178,7 @@ export default function Support() {
               <div className="bg-white rounded-lg p-4 mb-4">
                 <h3 className="font-bold text-gray-900 mb-2">サポート受付時間</h3>
                 <p className="text-sm text-gray-700">
-                  平日 9:00 - 18:00（土日祝日、年末年始を除く）
+                  Monday - Friday: 9:00 AM - 6:00 PM EST（土日祝日、年末年始を除く）
                 </p>
               </div>
 

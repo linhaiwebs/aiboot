@@ -10,7 +10,7 @@ export default function Terms() {
           className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
-          トップページに戻る
+          Back to Home
         </Link>
 
         <div className="bg-white rounded-xl shadow-lg p-8">
@@ -27,7 +27,7 @@ export default function Terms() {
             <section className="mb-8">
               <h2 className="text-xl font-bold text-gray-900 mb-4">第1条（適用）</h2>
               <p className="text-gray-700 leading-relaxed mb-3">
-                本規約は、AI株式診断サービス（以下「当サービス」といいます）の利用に関する条件を、当サービスを利用する全ての方（以下「利用者」といいます）と合同会社リコッテ（以下「当社」といいます）との間で定めるものです。
+                本規約は、AI株式診断サービス（以下「当サービス」といいます）の利用に関する条件を、当サービスを利用する全ての方（以下「利用者」といいます）とStar Merchant Services（以下「当社」といいます）との間で定めるものです。
               </p>
               <p className="text-gray-700 leading-relaxed">
                 利用者は、当サービスを利用することにより、本規約の全ての内容に同意したものとみなされます。
