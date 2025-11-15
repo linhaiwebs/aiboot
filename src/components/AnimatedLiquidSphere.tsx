@@ -1,10 +1,6 @@
 export default function AnimatedLiquidSphere() {
   return (
-    <div className="flex flex-col items-center justify-center gap-6">
-      <h1 className="text-5xl md:text-6xl font-black tracking-wider bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent animate-text-shimmer drop-shadow-2xl">
-        AI
-      </h1>
-
+    <div className="flex flex-col items-center justify-center">
       <div className="relative w-64 h-64 flex items-center justify-center">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="liquid-sphere-layer-1 absolute w-48 h-48 rounded-full blur-xl opacity-80"></div>
@@ -15,9 +11,13 @@ export default function AnimatedLiquidSphere() {
         </div>
 
         <div className="absolute inset-0 rounded-full shadow-[0_0_80px_rgba(139,92,246,0.6)]"></div>
+
+        <h1 className="relative z-10 text-7xl md:text-8xl font-black tracking-wider bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent animate-text-shimmer drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]">
+          AI
+        </h1>
       </div>
 
-      <h2 className="text-xl md:text-2xl font-bold tracking-widest text-white/90 drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]">
+      <h2 className="mt-4 text-xl md:text-2xl font-bold tracking-widest text-white/90 drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]">
         STOCK TRADING ROBOT
       </h2>
 
