@@ -1,25 +1,25 @@
 export default function AnimatedLiquidSphere() {
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="relative w-64 h-64 flex items-center justify-center">
+      <h2 className="mb-3 text-base md:text-lg font-bold tracking-widest text-white/90 drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]">
+        STOCK TRADING ROBOT
+      </h2>
+
+      <div className="relative w-48 h-48 flex items-center justify-center">
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="liquid-sphere-layer-1 absolute w-48 h-48 rounded-full blur-xl opacity-80"></div>
-          <div className="liquid-sphere-layer-2 absolute w-52 h-52 rounded-full blur-lg opacity-70"></div>
-          <div className="liquid-sphere-layer-3 absolute w-56 h-56 rounded-full blur-md opacity-60"></div>
-          <div className="liquid-sphere-main absolute w-44 h-44 rounded-full backdrop-blur-sm"></div>
-          <div className="liquid-sphere-highlight absolute w-20 h-20 rounded-full blur-2xl opacity-90"></div>
+          <div className="liquid-sphere-layer-1 absolute w-36 h-36 rounded-full blur-xl opacity-80"></div>
+          <div className="liquid-sphere-layer-2 absolute w-40 h-40 rounded-full blur-lg opacity-70"></div>
+          <div className="liquid-sphere-layer-3 absolute w-44 h-44 rounded-full blur-md opacity-60"></div>
+          <div className="liquid-sphere-main absolute w-32 h-32 rounded-full backdrop-blur-sm"></div>
+          <div className="liquid-sphere-highlight absolute w-14 h-14 rounded-full blur-2xl opacity-90"></div>
         </div>
 
-        <div className="absolute inset-0 rounded-full shadow-[0_0_80px_rgba(139,92,246,0.6)]"></div>
+        <div className="absolute inset-0 rounded-full shadow-[0_0_60px_rgba(139,92,246,0.6)]"></div>
 
-        <h1 className="relative z-10 text-7xl md:text-8xl font-black tracking-wider bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent animate-text-shimmer drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]">
+        <h1 className="relative z-10 text-5xl md:text-6xl font-black tracking-wider bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent animate-text-shimmer drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]">
           AI
         </h1>
       </div>
-
-      <h2 className="mt-4 text-xl md:text-2xl font-bold tracking-widest text-white/90 drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]">
-        STOCK TRADING ROBOT
-      </h2>
 
       <style>{`
         @keyframes liquid-flow-1 {

@@ -390,7 +390,7 @@ export default function RefactoredHome() {
             <RobotHeaderAnimation />
 
             <div className="text-center space-y-4 max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-orange-accent via-orange-light to-orange-accent bg-clip-text text-transparent leading-tight">
+              <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-accent via-orange-light to-orange-accent bg-clip-text text-transparent leading-tight">
                 2025 Most Powerful AI
               </h1>
 
