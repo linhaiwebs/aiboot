@@ -5,7 +5,7 @@ interface ReportData {
   stockCode: string;
   stockName: string;
   analysis: string;
-  lineRedirectUrl?: string;
+  whatsappRedirectUrl?: string;
 }
 
 export async function generateDiagnosisReport(data: ReportData): Promise<void> {
@@ -25,7 +25,7 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
         properties: {},
         children: [
           new Paragraph({
-            text: 'AI株式分析レポート',
+            text: 'AI Stock Analysis Report',
             heading: HeadingLevel.HEADING_1,
             alignment: AlignmentType.CENTER,
             spacing: { after: 400 }
@@ -34,7 +34,7 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
           new Paragraph({
             children: [
               new TextRun({
-                text: `作成日時: ${currentDate}`,
+                text: `Created: ${currentDate}`,
                 size: 20,
                 color: '666666'
               })
@@ -44,7 +44,7 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
           }),
 
           new Paragraph({
-            text: '分析対象銘柄',
+            text: 'Target Stock',
             heading: HeadingLevel.HEADING_2,
             spacing: { before: 400, after: 200 }
           }),
@@ -52,7 +52,7 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
           new Paragraph({
             children: [
               new TextRun({
-                text: `銘柄コード: `,
+                text: `Stock Code: `,
                 bold: true
               }),
               new TextRun({
@@ -65,7 +65,7 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
           new Paragraph({
             children: [
               new TextRun({
-                text: `銘柄名: `,
+                text: `Stock Name: `,
                 bold: true
               }),
               new TextRun({
@@ -88,7 +88,7 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
           }),
 
           new Paragraph({
-            text: '詳細な分析を毎日受け取る',
+            text: 'Receive Daily Detailed Analysis',
             heading: HeadingLevel.HEADING_2,
             spacing: { before: 400, after: 200 }
           }),
@@ -96,22 +96,22 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
           new Paragraph({
             children: [
               new TextRun({
-                text: 'LINEで登録すると、毎日最新の株式分析レポートをお届けします。',
+                text: 'Register on WhatsApp to receive daily stock analysis reports.',
                 size: 22
               })
             ],
             spacing: { after: 200 }
           }),
 
-          ...(data.lineRedirectUrl ? [
+          ...(data.whatsappRedirectUrl ? [
             new Paragraph({
               children: [
                 new TextRun({
-                  text: '登録URL: ',
+                  text: 'Registration URL: ',
                   bold: true
                 }),
                 new TextRun({
-                  text: data.lineRedirectUrl,
+                  text: data.whatsappRedirectUrl,
                   color: '0000FF'
                 })
               ],

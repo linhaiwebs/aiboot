@@ -119,7 +119,7 @@ export function trackConversion(): void {
     if (currentConfig.ga4_measurement_id && window.gtag) {
       window.gtag('event', 'line_conversion', {
         event_category: 'engagement',
-        event_label: 'LINE CTA Click',
+        event_label: 'WhatsApp CTA Click',
       });
       console.log('[Google Tracking] GA4 event tracked: line_conversion');
     }

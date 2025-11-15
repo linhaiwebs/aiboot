@@ -42,7 +42,7 @@ router.post('/diagnosis', async (req, res) => {
     if (!apiKeysString) {
       console.warn('SILICONFLOW_API_KEY not configured, using mock response');
 
-      const mockAnalysis = `【${stockData.name}（${code}）の市場分析】\n\n現在の株価は${stockData.price}円で、前日比${stockData.change}円（${stockData.changePercent}%）の変動となっています。\n\n■ テクニカル指標\nPER: ${stockData.per}倍\nPBR: ${stockData.pbr}倍\n配当利回り: ${stockData.dividend}%\n\n■ 業種分析\n${stockData.industry}セクターに属しており、時価総額は${stockData.marketCap}億円です。\n\n■ 市場動向\n本銘柄は現在の市場環境において、一定の注目を集めています。テクニカル指標から見ると、${parseFloat(stockData.per) > 15 ? "やや割高" : "適正水準"}の評価となっています。\n\n※本分析は情報提供のみを目的としており、投資の推奨や助言ではありません。投資判断は必ずご自身の責任で行ってください。`;
+      const mockAnalysis = `【${stockData.name} (${code}) Market Analysis】\n\nCurrent stock price is ¥${stockData.price}, change ¥${stockData.change} (${stockData.changePercent}%)\n\n■ Technical Indicators\nPER: ${stockData.per}x\nPBR: ${stockData.pbr}x\nDividend Yield: ${stockData.dividend}%\n\n■ Industry Analysis\nBelongs to ${stockData.industry} sector with market cap of ¥${stockData.marketCap} billion.\n\n■ Market Trend\nThis stock is attracting attention in the current market environment. Based on technical indicators, it is evaluated as ${parseFloat(stockData.per) > 15 ? "slightly overvalued" : "fair value"}.\n\n※This analysis is for informational purposes only and does not constitute investment advice. Investment decisions are your own responsibility.`;
 
       await saveDiagnosisToCache(code, stockData, mockAnalysis, 'mock');
       const responseTime = Date.now() - startTime;
@@ -59,50 +59,50 @@ router.post('/diagnosis', async (req, res) => {
     let prompt;
 
     if (stockData) {
-      prompt = `あなたは日本の株式市場アナリストです。以下の株式データに基づいて、指定されたフォーマットで診断結果を日本語で作成してください。
+      prompt = `You are a stock market analyst. Based on the following stock data, create a diagnosis result in English following the specified format.
 
-株式情報：
-銘柄名: ${stockData.name}
-コード: ${code}
-現在株価: ${stockData.price}円
-前日比: ${stockData.change}円 (${stockData.changePercent})
-PER: ${stockData.per}倍
-PBR: ${stockData.pbr}倍
-配当利回り: ${stockData.dividend}%
-業種: ${stockData.industry}
-時価総額: ${stockData.marketCap}億円
+Stock Information:
+Company Name: ${stockData.name}
+Code: ${code}
+Current Price: ¥${stockData.price}
+Change: ¥${stockData.change} (${stockData.changePercent})
+PER: ${stockData.per}x
+PBR: ${stockData.pbr}x
+Dividend Yield: ${stockData.dividend}%
+Industry: ${stockData.industry}
+Market Cap: ¥${stockData.marketCap} billion
 
-必ず以下のフォーマットで出力してください：
+You must output exactly in the following format:
 
-ご入力いただいた ${stockData.name} について、モメンタム分析・リアルタイムデータ・AIロジックをもとに診断を行いました。
+We have analyzed ${stockData.name} based on momentum analysis, real-time data, and AI logic.
 
-現在の株価は ${stockData.price} 円、前日比 ${stockData.change} 円（${stockData.changePercent}）
+Current stock price is ¥${stockData.price}, change ¥${stockData.change} (${stockData.changePercent})
 
-私たちのスタッフ、「AI 株式 アシスタント」のLINEアカウントを追加してください。
+Please add our "AI Stock Assistant" WhatsApp account.
 
-追加が完了しましたら、詳細な診断レポートを受け取るために、銘柄コード「${stockData.name}」または「${code}」と送信してください。
+Once added, send the stock code "${stockData.name}" or "${code}" to receive a detailed diagnostic report.
 
-メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。
+The AI diagnosis will begin instantly when you send your message, and you'll receive the latest report immediately.
 
-重要: このフォーマットを厳密に守り、他の分析内容は含めないでください。`;
+Important: Strictly follow this format and do not include any other analysis content.`;
     } else {
-      prompt = `あなたは日本の株式市場アナリストです。ユーザーが入力したコード「${code}」について診断を行います。
+      prompt = `You are a stock market analyst. Please diagnose the code "${code}" entered by the user.
 
-この入力コードは有効な株式コードではない可能性があります。
+This input code may not be a valid stock code.
 
-必ず以下のフォーマットで出力してください：
+You must output exactly in the following format:
 
-ご入力いただいたコード「${code}」について確認しました。
+We have reviewed the code "${code}" you entered.
 
-申し訳ございませんが、このコードに対応する株式データを取得できませんでした。正しい4桁の株式コード（例：2269）を入力してください。
+Unfortunately, we could not retrieve stock data for this code. Please enter a valid 4-digit stock code (e.g., 2269).
 
-私たちのスタッフ、「AI 株式 アシスタント」のLINEアカウントを追加してください。
+Please add our "AI Stock Assistant" WhatsApp account.
 
-追加が完了しましたら、詳細な診断レポートを受け取るために、正しい銘柄コードを送信してください。
+Once added, send a correct stock code to receive a detailed diagnostic report.
 
-メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。
+The AI diagnosis will begin instantly when you send your message, and you'll receive the latest report immediately.
 
-重要: このフォーマットを厳密に守り、他の分析内容は含めないでください。`;
+Important: Strictly follow this format and do not include any other analysis content.`;
     }
 
     res.setHeader('Content-Type', 'text/event-stream');
@@ -147,7 +147,7 @@ PBR: ${stockData.pbr}倍
         console.error('Request timeout after 45 seconds');
         const responseTime = Date.now() - startTime;
         await recordUsageStats({ cacheHit: false, apiCall: true, error: true, responseTime });
-        res.write(`data: ${JSON.stringify({ error: 'リクエストがタイムアウトしました。もう一度お試しください。' })}\n\n`);
+        res.write(`data: ${JSON.stringify({ error: 'Request timed out. Please try again.' })}\n\n`);
         res.end();
         return;
       }
@@ -230,12 +230,12 @@ PBR: ${stockData.pbr}倍
 
     if (!res.headersSent) {
       res.status(500).json({
-        error: '診断中にエラーが発生しました',
+        error: 'An error occurred during diagnosis',
         details: error.message,
         type: error.name,
       });
     } else {
-      res.write(`data: ${JSON.stringify({ error: '診断中にエラーが発生しました', details: error.message })}\n\n`);
+      res.write(`data: ${JSON.stringify({ error: 'An error occurred during diagnosis', details: error.message })}\n\n`);
       res.end();
     }
   }

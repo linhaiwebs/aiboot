@@ -170,7 +170,7 @@ export default function RefactoredHome() {
       }
 
       if (!response.ok) {
-        throw new Error('AI診断に失敗しました');
+        throw new Error('AI diagnosis failed');
       }
 
       setDiagnosisState('processing');
@@ -184,7 +184,7 @@ export default function RefactoredHome() {
         let firstChunk = true;
 
         if (!reader) {
-          throw new Error('ストリーム読み取りに失敗しました');
+          throw new Error('Failed to read stream');
         }
 
         while (true) {
@@ -290,27 +290,27 @@ export default function RefactoredHome() {
     }
   };
 
-  const handleLineConversion = async () => {
+  const handleWhatsAppConversion = async () => {
     try {
       trackConversionButtonClick();
 
       const response = await apiClient.get('/api/line-redirects/select');
 
       if (!response.ok) {
-        console.error('Failed to get LINE redirect link');
-        alert('LINEリンクの取得に失敗しました。しばらくしてからもう一度お試しください。');
+        console.error('Failed to get WhatsApp redirect link');
+        alert('Failed to get WhatsApp link. Please try again later.');
         return;
       }
 
       const data = await response.json();
 
       if (!data.success || !data.link) {
-        console.error('No active LINE redirect links available');
-        alert('現在利用可能なLINEリンクがありません。');
+        console.error('No active WhatsApp redirect links available');
+        alert('No WhatsApp links currently available.');
         return;
       }
 
-      const lineUrl = data.link.redirect_url;
+      const whatsappUrl = data.link.redirect_url;
 
       trackConversion();
 
@@ -318,26 +318,26 @@ export default function RefactoredHome() {
         gclid: urlParams.gclid
       });
 
-      console.log('LINE conversion tracked successfully');
+      console.log('WhatsApp conversion tracked successfully');
 
       setTimeout(() => {
-        window.location.href = lineUrl;
+        window.location.href = whatsappUrl;
       }, 300);
     } catch (error) {
-      console.error('LINE conversion error:', error);
-      alert('操作に失敗しました。しばらくしてからもう一度お試しください。');
+      console.error('WhatsApp conversion error:', error);
+      alert('Operation failed. Please try again later.');
     }
   };
 
   const handleReportDownload = async () => {
     try {
       const response = await apiClient.get('/api/line-redirects/select');
-      let lineRedirectUrl = '';
+      let whatsappRedirectUrl = '';
 
       if (response.ok) {
         const data = await response.json();
         if (data.success && data.link) {
-          lineRedirectUrl = data.link.redirect_url;
+          whatsappRedirectUrl = data.link.redirect_url;
         }
       }
 
@@ -345,7 +345,7 @@ export default function RefactoredHome() {
         stockCode: stockCode,
         stockName: stockData?.info.name || '',
         analysis: analysisResult,
-        lineRedirectUrl: lineRedirectUrl
+        whatsappRedirectUrl: whatsappRedirectUrl
       });
 
       await userTracking.trackEvent({
@@ -473,7 +473,7 @@ export default function RefactoredHome() {
           analysis={analysisResult}
           stockCode={inputValue}
           stockName={stockData?.info.name || inputValue}
-          onLineConversion={handleLineConversion}
+          onWhatsAppConversion={handleWhatsAppConversion}
           onReportDownload={handleReportDownload}
           isStreaming={diagnosisState === 'streaming'}
           isConnecting={diagnosisState === 'connecting'}
