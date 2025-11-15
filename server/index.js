@@ -86,11 +86,12 @@ function securityHeadersMiddleware(req, res, next) {
 
   const cspDirectives = [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
-    "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: https:",
-    "font-src 'self' data:",
-    "connect-src 'self' https://www.googletagmanager.com https://api.siliconflow.cn https://kabutan.jp",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://pagead2.googlesyndication.com",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "img-src 'self' data: https: https://www.google.com https://www.google.co.jp https://googleads.g.doubleclick.net https://www.googleadservices.com https://pagead2.googlesyndication.com",
+    "font-src 'self' data: https://fonts.gstatic.com",
+    "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://googleads.g.doubleclick.net https://www.googleadservices.com https://api.siliconflow.cn https://kabutan.jp",
+    "frame-src https://bid.g.doubleclick.net https://googleads.g.doubleclick.net https://www.googleadservices.com",
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'"
