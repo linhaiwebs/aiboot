@@ -5,14 +5,14 @@ interface StockCodeInputProps {
 
 export default function StockCodeInput({ value, onChange }: StockCodeInputProps) {
   return (
-    <div className="relative max-w-md mx-auto">
+    <div className="relative max-w-2xl mx-auto">
       <div className="relative">
         <input
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          placeholder="輸入股票代碼 (例: 2269)"
-          className="w-full px-6 py-4 text-lg font-semibold text-gray-800 bg-white border-4 border-blue-400 rounded-xl shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 focus:border-blue-500 transition-all"
+          placeholder="Enter company name or ticker symbol"
+          className="w-full px-6 py-5 text-lg font-medium text-white placeholder-white/50 bg-navy-primary/60 backdrop-blur-md border-2 border-white/20 rounded-2xl shadow-2xl focus:outline-none focus:ring-2 focus:ring-cyan-primary focus:border-cyan-primary transition-all"
           maxLength={4}
         />
       </div>

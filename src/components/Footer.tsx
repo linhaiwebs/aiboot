@@ -44,7 +44,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative z-20 border-t-2 border-white/20 mt-12">
+    <footer className="relative z-20 border-t border-white/10 mt-12 bg-navy-secondary/50 backdrop-blur-sm">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 py-8">
         {/* Legal Disclosure Section - Desktop */}
         <div className="hidden md:block bg-white/90 backdrop-blur-sm border-2 border-amber-300 rounded-lg p-6 mb-8 shadow-xl">
@@ -191,7 +191,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/terms"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
                     利用規約 <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -199,7 +199,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/privacy"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
                     プライバシーポリシー <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -207,7 +207,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/disclaimer"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
                     免責事項 <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -215,7 +215,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/risk-disclosure"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
                     リスク開示書面 <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -223,7 +223,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/specified-commercial-transaction-act"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
                     特定商取引法表記 <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -241,7 +241,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/contact"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
                     お問い合わせフォーム <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -249,7 +249,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/faq"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
                     よくある質問 <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -257,7 +257,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/support"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
                     サポート <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -298,7 +298,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/about"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
                     会社概要 <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -306,7 +306,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/team"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
                     チーム紹介 <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -314,7 +314,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/careers"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
                     採用情報 <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -322,7 +322,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/press"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-white/80 hover:text-cyan-primary hover:underline transition-colors flex items-center gap-1"
                   >
                     プレスリリース <ExternalLink className="w-3 h-3" />
                   </Link>

@@ -6,8 +6,6 @@ import DynamicAIPrompt from '../components/DynamicAIPrompt';
 import DiagnosisButton from '../components/DiagnosisButton';
 import DiagnosisLoadingOverlay from '../components/DiagnosisLoadingOverlay';
 import DiagnosisModal from '../components/DiagnosisModal';
-import ApiStatsDisplay from '../components/ApiStatsDisplay';
-import AIAnalysisBanner from '../components/AIAnalysisBanner';
 import { StockData } from '../types/stock';
 import { DiagnosisState } from '../types/diagnosis';
 import { useUrlParams } from '../hooks/useUrlParams';
@@ -387,14 +385,30 @@ export default function RefactoredHome() {
       <VideoBackground />
 
       <div className="relative z-10 min-h-screen flex flex-col">
-        <ApiStatsDisplay />
-
         <div className="flex-grow flex flex-col items-center justify-center px-4 py-12 space-y-8 md:space-y-12">
-          <div className="flex flex-col items-center space-y-6">
+          <div className="flex flex-col items-center space-y-8 md:space-y-10">
             <RobotHeaderAnimation />
-          </div>
 
-          <AIAnalysisBanner />
+            <div className="text-center space-y-4 max-w-4xl mx-auto">
+              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-orange-accent via-orange-light to-orange-accent bg-clip-text text-transparent leading-tight">
+                2025 Most Powerful AI
+              </h1>
+
+              <h2 className="text-2xl md:text-3xl font-semibold text-white">
+                Stock Price Prediction
+              </h2>
+
+              <div className="mt-8 space-y-3">
+                <p className="text-lg md:text-xl text-white/90">
+                  Prediction Accuracy Reaches <span className="text-orange-accent font-bold text-2xl md:text-3xl animate-number-pulse">99.8%</span>
+                </p>
+
+                <p className="text-sm md:text-base text-white/80 leading-relaxed max-w-2xl mx-auto">
+                  Enter your stock code or interested stock code below, and the AI system will complete the analysis within 1.5 seconds. Currently, <span className="text-orange-accent font-bold underline decoration-2 underline-offset-4">46,863</span> people are viewing the complete report for free!
+                </p>
+              </div>
+            </div>
+          </div>
 
           <div className="w-full max-w-2xl space-y-6">
             <StockCodeInput
@@ -414,8 +428,8 @@ export default function RefactoredHome() {
 
             {loading && (
               <div className="text-center py-8">
-                <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-white border-t-blue-500"></div>
-                <p className="mt-4 text-white font-semibold text-lg drop-shadow-lg">株価データを読み込んでいます...</p>
+                <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-cyan-primary/30 border-t-cyan-primary"></div>
+                <p className="mt-4 text-white font-semibold text-lg drop-shadow-lg">Loading stock data...</p>
               </div>
             )}
 
@@ -431,19 +445,34 @@ export default function RefactoredHome() {
 
             {diagnosisState === 'error' && (
               <div className="bg-red-900/80 backdrop-blur-sm border-2 border-red-500 rounded-xl p-6 text-center">
-                <h3 className="text-xl font-bold text-red-300 mb-3">診断エラー</h3>
+                <h3 className="text-xl font-bold text-red-300 mb-3">Diagnosis Error</h3>
                 <p className="text-red-200 font-semibold mb-4 whitespace-pre-line">{error}</p>
                 <button
                   onClick={() => {
                     setDiagnosisState('initial');
                     setError(null);
                   }}
-                  className="px-6 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold rounded-lg hover:from-yellow-500 hover:to-yellow-600 transition-all shadow-lg"
+                  className="px-6 py-3 bg-cyan-gradient text-white font-bold rounded-lg hover:bg-cyan-gradient-hover transition-all shadow-lg shadow-cyan-glow"
                 >
-                  もう一度試す
+                  Try Again
                 </button>
               </div>
             )}
+          </div>
+
+          <div className="mt-8 text-center space-y-2">
+            <p className="text-sm text-white/60">
+              Disclaimer: This website's information is not financial advice. Use at your own risk.
+            </p>
+            <div className="flex items-center justify-center gap-4 text-sm">
+              <a href="/terms" className="text-cyan-primary hover:text-cyan-light transition-colors underline">
+                Terms of Use
+              </a>
+              <span className="text-white/40">•</span>
+              <a href="/privacy" className="text-cyan-primary hover:text-cyan-light transition-colors underline">
+                Privacy Policy
+              </a>
+            </div>
           </div>
         </div>
 
