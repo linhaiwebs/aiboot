@@ -1,10 +1,6 @@
 export default function AnimatedLiquidSphere() {
   return (
     <div className="flex flex-col items-center justify-center">
-      <h2 className="mb-3 text-base md:text-lg font-bold tracking-widest text-white/90 drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]">
-        STOCK TRADING ROBOT
-      </h2>
-
       <div className="relative w-48 h-48 flex items-center justify-center">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="liquid-sphere-layer-1 absolute w-36 h-36 rounded-full blur-xl opacity-80"></div>
@@ -20,6 +16,10 @@ export default function AnimatedLiquidSphere() {
           AI
         </h1>
       </div>
+
+      <h2 className="relative -mt-6 z-20 text-base md:text-lg font-bold tracking-widest text-white/90 drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]">
+        STOCK TRADING ROBOT
+      </h2>
 
       <style>{`
         @keyframes liquid-flow-1 {
