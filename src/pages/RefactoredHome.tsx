@@ -359,7 +359,7 @@ export default function RefactoredHome() {
               </div>
             )}
 
-            {inputValue && !loading && diagnosisState === 'initial' && (
+            {inputValue && diagnosisState === 'initial' && (
               <DiagnosisButton onClick={runDiagnosis} />
             )}
 
