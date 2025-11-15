@@ -18,128 +18,142 @@ export default function Terms() {
             <div className="bg-blue-100 p-3 rounded-lg">
               <FileText className="w-6 h-6 text-blue-700" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-900">利用規約</h1>
+            <h1 className="text-3xl font-bold text-gray-900">Terms of Service</h1>
           </div>
 
           <div className="prose max-w-none">
-            <p className="text-sm text-gray-600 mb-6">最終更新日: 2025年10月21日</p>
+            <p className="text-sm text-gray-600 mb-6">Last Updated: November 15, 2025</p>
 
             <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">第1条（適用）</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Article 1 - Application</h2>
               <p className="text-gray-700 leading-relaxed mb-3">
-                本規約は、AI株式診断サービス（以下「当サービス」といいます）の利用に関する条件を、当サービスを利用する全ての方（以下「利用者」といいます）とStar Merchant Services（以下「当社」といいます）との間で定めるものです。
+                These Terms of Service establish the conditions for using the AI Stock Analysis Service (hereinafter "the Service")
+                between all users of the Service (hereinafter "Users") and Star Merchant Services (hereinafter "the Company").
               </p>
               <p className="text-gray-700 leading-relaxed">
-                利用者は、当サービスを利用することにより、本規約の全ての内容に同意したものとみなされます。
+                By using the Service, Users are deemed to have agreed to all provisions of these Terms.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">第2条（サービスの内容）</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Article 2 - Service Description</h2>
               <p className="text-gray-700 leading-relaxed mb-3">
-                当サービスは、AI技術を活用して株式市場の情報を分析し、利用者に提供する情報提供サービスです。
+                The Service is an information provision service that analyzes stock market information using AI technology
+                and provides it to Users.
               </p>
               <p className="text-gray-700 leading-relaxed mb-3">
-                当サービスは以下の機能を提供します：
+                The Service provides the following features:
               </p>
               <ul className="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                <li>株式銘柄の基本情報の表示</li>
-                <li>株価推移のグラフ表示</li>
-                <li>AIによる株式分析レポートの生成</li>
-                <li>市場データの集計および統計情報の提供</li>
+                <li>Display of basic stock information</li>
+                <li>Stock price trend charts</li>
+                <li>AI-generated stock analysis reports</li>
+                <li>Market data aggregation and statistical information</li>
               </ul>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">第3条（利用上の注意事項）</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Article 3 - Important Notice</h2>
               <div className="bg-amber-50 border-l-4 border-amber-500 p-4 mb-4">
-                <p className="text-gray-800 font-semibold mb-2">重要な注意事項</p>
+                <p className="text-gray-800 font-semibold mb-2">Critical Information</p>
                 <p className="text-gray-700 leading-relaxed">
-                  当サービスは情報提供のみを目的としており、投資助言や投資勧誘を行うものではありません。
-                  当サービスが提供する情報は、投資判断の参考情報として提供されるものであり、投資成果を保証するものではありません。
+                  The Service is for informational purposes only and does not constitute investment advice or solicitation.
+                  Information provided by the Service is offered as reference for investment decisions and does not guarantee investment results.
                 </p>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                利用者は、自己の責任において投資判断を行うものとし、当サービスの利用により生じた損害について、当社は一切の責任を負いません。
+                Users shall make investment decisions at their own responsibility, and the Company assumes no liability
+                for damages arising from use of the Service.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">第4条（禁止事項）</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Article 4 - Prohibited Activities</h2>
               <p className="text-gray-700 leading-relaxed mb-3">
-                利用者は、当サービスの利用にあたり、以下の行為を行ってはなりません：
+                Users shall not engage in the following activities when using the Service:
               </p>
               <ul className="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                <li>法令または公序良俗に違反する行為</li>
-                <li>犯罪行為に関連する行為</li>
-                <li>当サービスの運営を妨害する行為</li>
-                <li>他の利用者または第三者の権利を侵害する行為</li>
-                <li>虚偽の情報を登録する行為</li>
-                <li>当サービスの情報を商業目的で利用する行為</li>
-                <li>不正アクセスまたはこれを試みる行為</li>
-                <li>当サービスのシステムに過度な負荷をかける行為</li>
+                <li>Acts that violate laws or public order and morals</li>
+                <li>Acts related to criminal activities</li>
+                <li>Acts that interfere with the operation of the Service</li>
+                <li>Acts that infringe upon the rights of other users or third parties</li>
+                <li>Registration of false information</li>
+                <li>Commercial use of Service information</li>
+                <li>Unauthorized access or attempts thereof</li>
+                <li>Acts that place excessive load on the Service system</li>
               </ul>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">第5条（知的財産権）</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Article 5 - Intellectual Property Rights</h2>
               <p className="text-gray-700 leading-relaxed mb-3">
-                当サービスに含まれるコンテンツ、テキスト、画像、プログラム等の著作権その他の知的財産権は、当社または当社にライセンスを許諾している者に帰属します。
+                Copyrights and other intellectual property rights in content, text, images, programs, and other materials
+                included in the Service belong to the Company or parties who have licensed them to the Company.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                利用者は、当社の事前の書面による承諾なく、これらを複製、転載、配布、改変等することはできません。
+                Users may not reproduce, republish, distribute, or modify these materials without prior written consent from the Company.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">第6条（免責事項）</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Article 6 - Disclaimer</h2>
               <p className="text-gray-700 leading-relaxed mb-3">
-                当社は、当サービスの内容、品質、正確性、完全性、有用性について、いかなる保証も行いません。
+                The Company makes no warranties regarding the content, quality, accuracy, completeness, or usefulness of the Service.
               </p>
               <p className="text-gray-700 leading-relaxed mb-3">
-                当サービスの利用により利用者に生じた損害について、当社は一切の責任を負いません。ただし、当社の故意または重過失による場合はこの限りではありません。
+                The Company assumes no liability for damages incurred by Users from use of the Service, except in cases
+                of intentional misconduct or gross negligence by the Company.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                当サービスの提供の遅延、中断、停止、データの消失等について、当社は一切の責任を負いません。
+                The Company assumes no liability for delays, interruptions, suspensions, data loss, or other issues
+                related to Service provision.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">第7条（サービスの変更・停止）</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Article 7 - Service Changes and Suspension</h2>
               <p className="text-gray-700 leading-relaxed">
-                当社は、利用者への事前の通知なく、当サービスの内容を変更し、または当サービスの提供を停止することができるものとします。
-                これにより利用者に生じた損害について、当社は一切の責任を負いません。
+                The Company may change the content of the Service or suspend provision of the Service without prior notice to Users.
+                The Company assumes no liability for damages incurred by Users as a result.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">第8条（個人情報の取扱い）</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Article 8 - Personal Information</h2>
               <p className="text-gray-700 leading-relaxed">
-                当社は、利用者の個人情報を、当社が別途定めるプライバシーポリシーに従って適切に取り扱います。
+                The Company will handle Users' personal information appropriately in accordance with the Privacy Policy
+                separately established by the Company.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">第9条（規約の変更）</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Article 9 - Changes to Terms</h2>
               <p className="text-gray-700 leading-relaxed">
-                当社は、必要に応じて本規約を変更することができます。変更後の規約は、当サービス上に掲載された時点から効力を生じるものとします。
+                The Company may change these Terms as necessary. Modified Terms shall become effective from the time they are posted on the Service.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">第10条（準拠法および管轄裁判所）</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Article 10 - Governing Law and Jurisdiction</h2>
               <p className="text-gray-700 leading-relaxed mb-3">
-                本規約の解釈にあたっては、日本法を準拠法とします。
+                These Terms shall be governed by and construed in accordance with the laws of the United States.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                当サービスに関して紛争が生じた場合には、東京地方裁判所を専属的合意管轄裁判所とします。
+                In the event of any disputes arising from the Service, the parties agree to the exclusive jurisdiction
+                of the courts located in Michigan, United States.
               </p>
             </section>
 
             <div className="bg-slate-100 rounded-lg p-6 mt-8">
-              <h3 className="font-bold text-gray-900 mb-3">お問い合わせ</h3>
+              <h3 className="font-bold text-gray-900 mb-3">Contact Us</h3>
+              <p className="text-sm text-gray-700 mb-2">
+                If you have any questions about these Terms, please contact us:
+              </p>
               <p className="text-sm text-gray-700">
-                本規約に関するご質問やご不明な点がございましたら、お問い合わせフォームよりご連絡ください。
+                <strong>Star Merchant Services</strong><br />
+                2335 Hayhurst Lane, Michigan 48226<br />
+                Phone: +1-313-759-8088<br />
+                Email: qddqdd9090@gmail.com
               </p>
             </div>
           </div>
