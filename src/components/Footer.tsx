@@ -100,10 +100,10 @@ export default function Footer() {
                 </li>
                 <li className="flex items-center gap-1 text-white drop-shadow-lg">
                   <Phone className="w-3 h-3" />
-                  <span>080-3824-1560</span>
+                  <span>+1-313-759-8088</span>
                 </li>
                 <li className="text-white/80 drop-shadow-lg text-xs">
-                  Hours: Mon-Fri 9:00-18:00 JST
+                  Hours: Mon-Fri 9:00 AM - 6:00 PM EST
                 </li>
               </ul>
             </div>
@@ -115,7 +115,7 @@ export default function Footer() {
                 Services
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm text-white drop-shadow-lg">
-                <li>Ricotte LLC</li>
+                <li>Star Merchant Services</li>
                 <li>AI Stock Analysis</li>
                 <li>Real-Time Market Data</li>
                 <li>Technical Analysis</li>
@@ -170,7 +170,7 @@ export default function Footer() {
           {/* Copyright Section */}
           <div className="border-t border-white/30 pt-4 text-center">
             <p className="text-xs sm:text-sm text-white drop-shadow-lg mb-2 font-medium">
-              &copy; {currentYear} Ricotte LLC. All rights reserved.
+              &copy; {currentYear} Star Merchant Services. All rights reserved.
             </p>
             <p className="text-[10px] sm:text-xs text-white/90 drop-shadow-lg leading-relaxed max-w-3xl mx-auto">
               Information provided on this site is not intended as investment advice or a recommendation to buy or sell securities.
